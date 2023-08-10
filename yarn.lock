@@ -1478,6 +1478,7 @@ __metadata:
     browserslist-ua-parser: ^1.0.1
     changelogen: ^0.5.4
     dd-trace: ^4.11.0
+    defu: ^6.1.2
     eslint: ^8.35.0
     eslint-config-standard-with-typescript: ^35.0.0
     eslint-formatter-pretty: ^5.0.0
