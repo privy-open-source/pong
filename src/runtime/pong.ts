@@ -9,8 +9,8 @@ export default defineEventHandler(() => {
     message: 'Pong',
     data   : {
       time       : (new Date()).toISOString(),
-      app_name   : import.meta.env.APP_NAME ?? '-',
-      app_version: import.meta.env.APP_VERSION ?? import.meta.env.BUILD_VERSION ?? '-',
+      app_name   : process.env.APP_NAME ?? '-',
+      app_version: process.env.APP_VERSION ?? process.env.BUILD_VERSION ?? '-',
       config     : config.public,
     },
   }

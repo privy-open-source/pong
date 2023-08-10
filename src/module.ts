@@ -30,6 +30,11 @@ export interface ModuleOptions {
    * @default true
    */
   tracer?: boolean,
+  /**
+   * Inject special headers to NuAPI
+   * @default true
+   */
+  nuapi?: boolean,
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -42,6 +47,7 @@ export default defineNuxtModule<ModuleOptions>({
     ping  : true,
     logger: true,
     tracer: true,
+    nuapi : true,
   },
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -59,19 +65,20 @@ export default defineNuxtModule<ModuleOptions>({
         loggerRedact: [
           'req.headers.cookie',
           'req.headers.authorization',
+          'req.headers["x-token"]',
           'req.headers["application-key"]',
           'req.headers["merchant-key"]',
         ],
       })
 
-      if (hasNuxtModule('@privyid/nuapi')) {
-        addPlugin({
-          src  : resolve('./runtime/nuapi'),
-          order: 5,
-        })
-      }
-
       addServerPlugin(resolve('./runtime/logger'))
+    }
+
+    if (options.nuapi && hasNuxtModule('@privyid/nuapi')) {
+      addPlugin({
+        src  : resolve('./runtime/nuapi'),
+        order: 5,
+      })
     }
   },
 })

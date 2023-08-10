@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "packageManager": "yarn@3.6.1",
   "description": "Service discovery, Log & Trace module",
-  "repository": "your-org/my-module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/privy-open-source/pong.git"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -75,5 +78,8 @@
     "@privyid/nuapi": {
       "optional": true
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
