@@ -9,16 +9,15 @@
 </template>
 
 <script setup lang="ts">
-import { createLazyton } from '@privyid/nuapi/core'
+import { useApi } from '@privyid/nuapi/core'
 import { onMounted, ref } from '#imports'
 
-const users  = ref([])
-const useApi = createLazyton({ prefixURL: '/api/example' })
+const users = ref([])
 
 function load () {
   users.value = []
 
-  useApi().get('/users')
+  useApi().get('/api/example/users')
     .then((response) => {
       users.value = response.data
     })

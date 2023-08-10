@@ -19,14 +19,16 @@ export function useLogger () {
         return reqId ?? nanoid()
       },
       customProps (req, res) {
-        const event = createEvent(req, res)
-        const span  = tracer.scope().active()
-        const ua    = getHeader(event, 'User-Agent')
+        const event   = createEvent(req, res)
+        const span    = tracer.scope().active()
+        const context = span?.context()
+        const ua      = getHeader(event, 'User-Agent')
 
         return {
-          'dd-span-id' : span?.context().toSpanId(),
-          'dd-trace-id': span?.context().toTraceId(),
-          'browser'    : ua ? parseUA(ua) : { browser: 'unknown', version: 'unknown' },
+          'dd-span-id'     : context?.toSpanId(),
+          'dd-trace-id'    : context?.toTraceId(),
+          'dd-trace-parent': context?.toTraceparent(),
+          'browser'        : ua ? parseUA(ua) : { browser: 'unknown', version: 'unknown' },
         }
       },
     })

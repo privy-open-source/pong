@@ -16,7 +16,7 @@ export default defineNuxtPlugin(() => {
         config.headers['X-Request-Id'] = nanoid()
 
       /**
-       * Add Require timestamp
+       * Add Request timestamp
        */
       if (!config.headers['X-Request-Timestamp'])
         config.headers['X-Request-Timestamp'] = Date.now().toString()

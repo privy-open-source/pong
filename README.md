@@ -16,7 +16,7 @@ Find and replace all on all files (CMD+SHIFT+F):
 
 Service discovery, Log & Trace module
 
-- [✨ &nbsp;Release Notes](/CHANGELOG.md)
+- [✨ &nbsp;Release Notes](https://github.com/privy-open-source/pong/releases)
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/@privyid/pong?file=playground%2Fapp.vue) -->
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
@@ -26,7 +26,7 @@ Service discovery, Log & Trace module
 - Add `/ping` route
 - Add Request Logger
 - Add Datadog Tracer
-- Inject special header on [NuAPI](https://github.com/privy-open-source/nuapi) client
+- Inject special header to [NuAPI](https://github.com/privy-open-source/nuapi) client
 
 ## Quick Setup
 
