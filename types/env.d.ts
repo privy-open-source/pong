@@ -4,6 +4,7 @@
 interface ImportMetaEnv {
   readonly APP_NAME: string,
   readonly APP_VERSION: string,
+  readonly APP_PLATFORM: string,
 
   readonly BUILD_VERSION: string,
   readonly BUILD_DATE: string,
@@ -12,4 +13,17 @@ interface ImportMetaEnv {
 
 interface ImportMeta {
   readonly env: ImportMetaEnv,
+}
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      readonly APP_NAME: string,
+      readonly APP_VERSION: string,
+      readonly APP_PLATFORM: string,
+
+      readonly BUILD_VERSION: string,
+      readonly BUILD_DATE: string,
+    }
+  }
 }

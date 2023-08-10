@@ -9,8 +9,8 @@ let logger: ReturnType<typeof PinoHttp>
 
 export function useLogger () {
   if (!logger) {
-    const config = useRuntimeConfig()
-    const pino   = PinoHttp({
+    const config   = useRuntimeConfig()
+    const pinoHttp = PinoHttp({
       redact: config.pong.loggerRedact,
       genReqId (req, res) {
         const event = createEvent(req, res)
@@ -20,20 +20,19 @@ export function useLogger () {
       },
       customProps (req, res) {
         const event   = createEvent(req, res)
-        const span    = tracer.scope().active()
-        const context = span?.context()
+        const context = tracer.scope().active()?.context()
         const ua      = getHeader(event, 'User-Agent')
 
         return {
-          'dd-span-id'     : context?.toSpanId(),
-          'dd-trace-id'    : context?.toTraceId(),
-          'dd-trace-parent': context?.toTraceparent(),
-          'browser'        : ua ? parseUA(ua) : { browser: 'unknown', version: 'unknown' },
+          'dd-span-id'    : context?.toSpanId(),
+          'dd-trace-id'   : context?.toTraceId(),
+          'dd-traceparent': context?.toTraceparent(),
+          'browser'       : ua ? parseUA(ua) : { browser: 'unknown', version: 'unknown' },
         }
       },
     })
 
-    logger = pino
+    logger = pinoHttp
   }
 
   return logger
