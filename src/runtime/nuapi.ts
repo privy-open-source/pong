@@ -5,30 +5,36 @@ import { nanoid } from 'nanoid'
 export default defineNuxtPlugin(() => {
   const route = useRoute()
 
+  let browserId: string
+
   onRequest(async (config) => {
     if (config.headers) {
       /**
-       * Add RequestId
+       * Add Request ID
        */
       if (!config.headers['X-Request-Id'])
         config.headers['X-Request-Id'] = nanoid()
 
       /**
-       * Add Browser's finggerprint
+       * Add Require timestamp
        */
-      if (!config.headers['X-Browser-Id'] && process.client) {
-        const { default: FpJS } = await import('@fingerprintjs/fingerprintjs')
-        const fp                = await FpJS.load()
-        const result            = await fp.get()
-
-        config.headers['X-Browser-Id'] = result.visitorId
-      }
+      if (!config.headers['X-Request-Timestamp'])
+        config.headers['X-Request-Timestamp'] = Date.now().toString()
 
       /**
-       * Add Browser's current url
+       * Add Browser's fingerprint
        */
-      if (!config.headers['X-Browser-Path'])
-        config.headers['X-Browser-Path'] = route.fullPath
+      if (!config.headers['X-Browser-Id'] && process.client) {
+        if (!browserId) {
+          const { default: FpJS } = await import('@fingerprintjs/fingerprintjs')
+          const fp                = await FpJS.load()
+          const result            = await fp.get()
+
+          browserId = result.visitorId
+        }
+
+        config.headers['X-Browser-Id'] = browserId
+      }
 
       /**
        * Add Testing Mode

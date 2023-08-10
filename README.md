@@ -14,32 +14,26 @@ Find and replace all on all files (CMD+SHIFT+F):
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-Service discovery and Logging module
+Service discovery, Log & Trace module
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/@privyid/pong?file=playground%2Fapp.vue) -->
 <!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
-## Features
+## What this module do?
 
 <!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+- Add `/ping` route
+- Add Request Logger
+- Add Datadog Tracer
+- Inject special header on [NuAPI](https://github.com/privy-open-source/nuapi) client
 
 ## Quick Setup
 
 1. Add `@privyid/pong` dependency to your project
 
 ```bash
-# Using pnpm
-pnpm add -D @privyid/pong
-
-# Using yarn
 yarn add --dev @privyid/pong
-
-# Using npm
-npm install --save-dev @privyid/pong
 ```
 
 2. Add `@privyid/pong` to the `modules` section of `nuxt.config.ts`
@@ -54,41 +48,28 @@ export default defineNuxtConfig({
 
 That's it! You can now use Pong in your Nuxt app ✨
 
-## Development
+## Contribution
 
-```bash
-# Install dependencies
-npm install
+- Clone this repository
+- Play [Nyan Cat](https://www.youtube.com/watch?v=QH2-TGUlwu4) in the background (really important!)
+- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
+- Run `yarn install`
+- Run `yarn dev:prepare` to generate type stubs.
+- Use `yarn dev` to start [playground](./playground) in development mode.
 
-# Generate type stubs
-npm run dev:prepare
+## License
 
-# Develop with the playground
-npm run dev
-
-# Build the playground
-npm run dev:build
-
-# Run ESLint
-npm run lint
-
-# Run Vitest
-npm run test
-npm run test:watch
-
-# Release new version
-npm run release
-```
+[MIT License](/LICENSE)
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@privyid/pong/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-src]: https://img.shields.io/npm/v/@privyid/pong/latest.svg?style=for-the-badge&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/@privyid/pong
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/@privyid/pong.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-src]: https://img.shields.io/npm/dm/@privyid/pong.svg?style=for-the-badge&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/@privyid/pong
 
-[license-src]: https://img.shields.io/npm/l/@privyid/pong.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-src]: https://img.shields.io/npm/l/@privyid/pong.svg?style=for-the-badge&colorA=18181B&colorB=28CF8D
 [license-href]: https://npmjs.com/package/@privyid/pong
 
-[nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
+[nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js&style=for-the-badge&colorA=18181B&colorB=28CF8D
 [nuxt-href]: https://nuxt.com
