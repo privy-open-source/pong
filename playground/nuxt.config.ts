@@ -1,7 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  modules   : ['../src/module'],
+  modules: [
+    '@privyid/nhp',
+    '@privyid/nuapi',
+    '../src/module',
+  ],
   devtools  : { enabled: false },
   typescript: {
     includeWorkspace: true,

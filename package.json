@@ -1,8 +1,8 @@
 {
   "name": "@privyid/pong",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "packageManager": "yarn@3.6.1",
-  "description": "Service discovery and Logging module",
+  "description": "Service discovery, Log & Trace module",
   "repository": "your-org/my-module",
   "license": "MIT",
   "type": "module",
@@ -19,7 +19,8 @@
     "dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
+    "prepack": "yarn build",
+    "build": "nuxt-module-build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
@@ -32,7 +33,9 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.0.0",
     "@nuxt/kit": "^3.6.5",
+    "browserslist-ua-parser": "^1.0.1",
     "dd-trace": "^4.11.0",
+    "defu": "^6.1.2",
     "nanoid": "^4.0.2",
     "pino-http": "^8.3.3"
   },
@@ -42,6 +45,7 @@
     "@nuxt/schema": "^3.6.5",
     "@nuxt/test-utils": "^3.6.5",
     "@privyid/eslint-config-persona": "^0.18.0",
+    "@privyid/nhp": "^0.3.1",
     "@privyid/nuapi": "^0.2.1",
     "@types/node": "^18.17.1",
     "@types/simple-oauth2": "^5.0.4",
@@ -62,7 +66,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "nuxt": "^3.6.5",
     "typescript": "^5.1.6",
-    "vitest": "^0.33.0"
+    "vitest": "^0.34.0"
   },
   "peerDependencies": {
     "@privyid/nuapi": "*"

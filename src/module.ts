@@ -4,6 +4,7 @@ import {
   createResolver,
   hasNuxtModule,
   addPlugin,
+  addServerPlugin,
 } from '@nuxt/kit'
 import { defuArrayFn } from 'defu'
 import type { Options } from 'pino-http'
@@ -19,11 +20,16 @@ export interface ModuleOptions {
    * Enable logger
    * @default true
    */
-  logger?: true,
+  logger?: boolean,
   /**
    * Censor logger
    */
   loggerRedact?: Options['redact'],
+  /**
+   * Enable Datadog Tracer
+   * @default true
+   */
+  tracer?: boolean,
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -35,6 +41,7 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     ping  : true,
     logger: true,
+    tracer: true,
   },
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -52,18 +59,19 @@ export default defineNuxtModule<ModuleOptions>({
         loggerRedact: [
           'req.headers.cookie',
           'req.headers.authorization',
-          'req.headers.application-key',
-          'req.headers.merchant-key',
+          'req.headers["application-key"]',
+          'req.headers["merchant-key"]',
         ],
       })
 
-      addServerHandler({
-        middleware: true,
-        handler   : resolve('./runtime/logger'),
-      })
+      if (hasNuxtModule('@privyid/nuapi')) {
+        addPlugin({
+          src  : resolve('./runtime/nuapi'),
+          order: 5,
+        })
+      }
 
-      if (hasNuxtModule('@privyid/nuapi'))
-        addPlugin(resolve('./runtime/nuapi'))
+      addServerPlugin(resolve('./runtime/logger'))
     }
   },
 })
