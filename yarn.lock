@@ -835,11 +835,11 @@ __metadata:
   linkType: hard
 
 "@fingerprintjs/fingerprintjs@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@fingerprintjs/fingerprintjs@npm:4.0.0"
+  version: 4.0.1
+  resolution: "@fingerprintjs/fingerprintjs@npm:4.0.1"
   dependencies:
     tslib: ^2.4.1
-  checksum: 8f3980a688685c0594c58863048ad5202b935d6ba47e74734de67b09d0ee2e4a8bc079b83d1a9737fc2507e7875a35818ce89c3f6fc91e83490d9680be522cdd
+  checksum: b4c6527d6a63d2583d0642b935001bf24a1e2af1ed69683286501c9eec364b7f9838501400725c92b6ceb02b4a4f7422ff3d743c3407812b931277f472c523c7
   languageName: node
   linkType: hard
 
