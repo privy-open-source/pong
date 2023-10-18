@@ -1,7 +1,7 @@
 {
   "name": "@privyid/pong",
   "version": "0.2.0",
-  "packageManager": "yarn@3.6.3",
+  "packageManager": "yarn@3.6.4",
   "description": "Service discovery, Log & Trace module",
   "repository": {
     "type": "git",
@@ -56,7 +56,7 @@
     "@types/simple-oauth2": "^5.0.4",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
-    "@vue/eslint-config-typescript": "^11.0.2",
+    "@vue/eslint-config-typescript": "^12.0.0",
     "changelogen": "^0.5.4",
     "eslint": "^8.35.0",
     "eslint-config-standard-with-typescript": "^35.0.0",
