@@ -67,12 +67,12 @@ export default defineNuxtModule<ModuleOptions>({
     if (options.logger) {
       nuxt.options.runtimeConfig.pong = defuArrayFn(nuxt.options.runtimeConfig.pong, options, {
         loggerRedact: [
-          'req.headers.cookie',
-          'req.headers.authorization',
-          'req.headers["x-token"]',
-          'req.headers["x-signature"]',
-          'req.headers["application-key"]',
-          'req.headers["merchant-key"]',
+          'request.headers.cookie',
+          'request.headers.authorization',
+          'request.headers["x-token"]',
+          'request.headers["x-signature"]',
+          'request.headers["application-key"]',
+          'request.headers["merchant-key"]',
           'user.uuid',
         ],
       })
