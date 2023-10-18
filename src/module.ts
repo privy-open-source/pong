@@ -66,8 +66,10 @@ export default defineNuxtModule<ModuleOptions>({
           'req.headers.cookie',
           'req.headers.authorization',
           'req.headers["x-token"]',
+          'req.headers["x-signature"]',
           'req.headers["application-key"]',
           'req.headers["merchant-key"]',
+          'user.uuid',
         ],
       })
 
@@ -77,7 +79,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (options.nuapi && hasNuxtModule('@privyid/nuapi')) {
       addPlugin({
         src  : resolve('./runtime/nuapi'),
-        order: 5,
+        order: 20,
       })
     }
   },
