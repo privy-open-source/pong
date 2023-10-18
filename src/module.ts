@@ -37,6 +37,10 @@ export interface ModuleOptions {
   nuapi?: boolean,
 }
 
+export interface ModulePrivateRuntimeConfig {
+  pong: Required<ModuleOptions>,
+}
+
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name     : '@privyid/pong',
