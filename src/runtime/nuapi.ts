@@ -5,12 +5,13 @@ import {
 } from '#imports'
 import { onRequest } from '@privyid/nuapi/core'
 import { nanoid } from 'nanoid'
+import { env } from 'std-env'
 
 export default defineNuxtPlugin(() => {
   const route       = useRoute()
-  const appName     = useState(() => process.server ? process.env.APP_NAME : undefined)
-  const appVersion  = useState(() => process.server ? (process.env.APP_VERSION ?? process.env.BUILD_VERSION) : undefined)
-  const appPlatform = useState(() => process.server ? process.env.APP_PLATFORM : undefined)
+  const appName     = useState(() => env.APP_NAME)
+  const appVersion  = useState(() => (env.APP_VERSION ?? env.BUILD_VERSION))
+  const appPlatform = useState(() => env.APP_PLATFORM)
 
   let browserId: string
 

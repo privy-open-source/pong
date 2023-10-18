@@ -1,5 +1,6 @@
 import { defineEventHandler } from 'h3'
 import { useRuntimeConfig } from '#imports'
+import { env } from 'std-env'
 
 export default defineEventHandler(() => {
   const config = useRuntimeConfig()
@@ -9,8 +10,8 @@ export default defineEventHandler(() => {
     message: 'Pong',
     data   : {
       time       : (new Date()).toISOString(),
-      app_name   : process.env.APP_NAME ?? '-',
-      app_version: process.env.APP_VERSION ?? process.env.BUILD_VERSION ?? '-',
+      app_name   : env.APP_NAME ?? '-',
+      app_version: env.APP_VERSION ?? env.BUILD_VERSION ?? '-',
       config     : config.public,
     },
   }

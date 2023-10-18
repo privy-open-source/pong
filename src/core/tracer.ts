@@ -1,5 +1,5 @@
 import ddTrace from 'dd-trace'
 
-const tracer = ddTrace.init()
+const tracer = ddTrace.init({ logInjection: true })
 
 export default tracer
