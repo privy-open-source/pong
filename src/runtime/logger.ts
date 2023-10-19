@@ -1,7 +1,7 @@
+import tracer from '../core/tracer'
 import { useRuntimeConfig } from '#imports'
 import type { NitroAppPlugin } from 'nitropack'
 import { useLogger } from '../core/logger'
-import tracer from '../core/tracer'
 import { fromNodeMiddleware } from 'h3'
 
 function defineNitroPlugin (def: NitroAppPlugin) {

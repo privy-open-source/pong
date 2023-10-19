@@ -1,7 +1,11 @@
 import PinoHttp, { type HttpLogger } from 'pino-http'
-import tracer from './tracer'
 import { useRuntimeConfig } from '#imports'
-import { createEvent, getHeader } from 'h3'
+import {
+  createEvent,
+  getHeader,
+  getRequestURL,
+  getResponseStatus,
+} from 'h3'
 import { nanoid } from 'nanoid'
 import { parseUA } from 'browserslist-ua-parser'
 import destr from 'destr'
@@ -24,7 +28,18 @@ export function useLogger () {
   if (!logger) {
     const config   = useRuntimeConfig()
     const pinoHttp = PinoHttp({
-      redact: config.pong.loggerRedact,
+      redact    : config.pong.loggerRedact,
+      formatters: {
+        level: (label) => {
+          return { level: label }
+        },
+        bindings (bindings) {
+          return {
+            ...bindings,
+            node: { version: process.version },
+          }
+        },
+      },
       genReqId (req, res) {
         const event = createEvent(req, res)
         const reqId = getHeader(event, 'X-Request-Id')
@@ -42,17 +57,44 @@ export function useLogger () {
         return 'info'
       },
       customProps (req, res) {
-        const event   = createEvent(req, res)
-        const context = tracer.scope().active()?.context()
-        const ua      = getHeader(event, 'User-Agent')
-        const auth    = getHeader(event, 'Authorization')
+        const event = createEvent(req, res)
+        const ua    = getHeader(event, 'User-Agent')
+        const auth  = getHeader(event, 'Authorization')
 
         return {
-          'dd-span-id'    : context?.toSpanId(),
-          'dd-trace-id'   : context?.toTraceId(),
-          'dd-traceparent': context?.toTraceparent(),
-          'browser'       : ua ? parseUA(ua) : { browser: 'unknown', version: 'unknown' },
-          'user'          : auth?.startsWith('Bearer') ? extractJWT(auth) : undefined,
+          browser: ua ? parseUA(ua) : { browser: 'unknown', version: 'unknown' },
+          user   : auth?.startsWith('Bearer') ? extractJWT(auth) : undefined,
+          http   : {
+            request_id : req.id,
+            version    : req.httpVersion,
+            method     : req.method,
+            url        : getRequestURL(event).href,
+            status_code: getResponseStatus(event),
+            referer    : getHeader(event, 'Referer'),
+            useragent  : ua,
+          },
+        }
+      },
+      customAttributeKeys: {
+        req: 'request',
+        res: 'response',
+        err: 'error',
+      },
+      customSuccessObject (req, res, val) {
+        return {
+          ...val,
+          duration: val.responseTime * 1_000_000,
+        }
+      },
+      customErrorObject (req, res, error, val) {
+        return {
+          ...val,
+          error: {
+            kind   : val.error.type,
+            message: val.error.message,
+            stack  : val.error.stack,
+          },
+          duration: val.responseTime * 1_000_000,
         }
       },
     })
