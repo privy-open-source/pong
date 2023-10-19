@@ -41,7 +41,7 @@
     "dd-trace": "^4.11.0",
     "defu": "^6.1.2",
     "destr": "^2.0.1",
-    "nanoid": "^4.0.2",
+    "nanoid": "^5.0.0",
     "pino-http": "^8.3.3"
   },
   "devDependencies": {
