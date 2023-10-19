@@ -71,6 +71,7 @@ export default defineNuxtModule<ModuleOptions>({
           'request.headers.authorization',
           'request.headers["x-token"]',
           'request.headers["x-signature"]',
+          'request.headers["x-signature-payload"]',
           'request.headers["application-key"]',
           'request.headers["merchant-key"]',
           'user.uuid',

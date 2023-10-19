@@ -33,6 +33,12 @@ export function useLogger () {
         level: (label) => {
           return { level: label }
         },
+        bindings (bindings) {
+          return {
+            ...bindings,
+            node: { version: process.version },
+          }
+        },
       },
       genReqId (req, res) {
         const event = createEvent(req, res)
@@ -83,6 +89,11 @@ export function useLogger () {
       customErrorObject (req, res, error, val) {
         return {
           ...val,
+          error: {
+            kind   : val.error.type,
+            message: val.error.message,
+            stack  : val.error.stack,
+          },
           duration: val.responseTime * 1_000_000,
         }
       },
