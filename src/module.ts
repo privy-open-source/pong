@@ -35,6 +35,12 @@ export interface ModuleOptions {
    * @default true
    */
   nuapi?: boolean,
+  /**
+   * Enable debug mode:
+   * - Show public config in `/ping`'s response
+   * @default true
+   */
+  debug?: boolean,
 }
 
 export interface ModulePrivateRuntimeConfig {
@@ -52,6 +58,7 @@ export default defineNuxtModule<ModuleOptions>({
     logger: true,
     tracer: true,
     nuapi : true,
+    debug : true,
   },
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)

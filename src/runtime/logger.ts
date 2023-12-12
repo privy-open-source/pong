@@ -11,7 +11,7 @@ function defineNitroPlugin (def: NitroAppPlugin) {
 export default defineNitroPlugin((nitroApp) => {
   const config = useRuntimeConfig()
   const logger = config.pong.tracer
-    ? tracer.wrap('h3.request', useLogger())
+    ? tracer.wrap('nuxt.request', useLogger())
     : useLogger()
 
   if (config.pong.logger) {

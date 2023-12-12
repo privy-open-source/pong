@@ -1,7 +1,7 @@
 {
   "name": "@privyid/pong",
   "version": "0.2.1",
-  "packageManager": "yarn@3.6.4",
+  "packageManager": "yarn@4.0.2",
   "description": "Service discovery, Log & Trace module",
   "repository": {
     "type": "git",
@@ -50,8 +50,8 @@
     "@nuxt/schema": "^3.6.5",
     "@nuxt/test-utils": "^3.6.5",
     "@privyid/eslint-config-persona": "^0.24.0",
-    "@privyid/nhp": "^0.4.0",
-    "@privyid/nuapi": "^0.2.1",
+    "@privyid/nhp": "^0.4.1",
+    "@privyid/nuapi": "^0.3.0-alpha.3",
     "@types/node": "^20.0.0",
     "@types/simple-oauth2": "^5.0.4",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
