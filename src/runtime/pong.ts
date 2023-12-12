@@ -3,7 +3,8 @@ import { useRuntimeConfig } from '#imports'
 import { env } from 'std-env'
 
 export default defineEventHandler(() => {
-  const config = useRuntimeConfig()
+  const config     = useRuntimeConfig()
+  const showConfig = config.pong.debug
 
   return {
     code   : 200,
@@ -12,7 +13,7 @@ export default defineEventHandler(() => {
       time       : (new Date()).toISOString(),
       app_name   : env.APP_NAME ?? '-',
       app_version: env.APP_VERSION ?? env.BUILD_VERSION ?? '-',
-      config     : config.public,
+      config     : showConfig ? config.public : undefined,
     },
   }
 })

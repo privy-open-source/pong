@@ -16,4 +16,5 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: { public: { showMe: 'SHOW ME' } },
 })
