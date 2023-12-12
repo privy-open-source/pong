@@ -1,7 +1,7 @@
 {
   "name": "@privyid/pong",
   "version": "0.2.1",
-  "packageManager": "yarn@3.6.4",
+  "packageManager": "yarn@4.0.2",
   "description": "Service discovery, Log & Trace module",
   "repository": {
     "type": "git",
