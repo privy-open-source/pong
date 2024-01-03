@@ -439,23 +439,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/native-appsec@npm:5.0.0":
-  version: 5.0.0
-  resolution: "@datadog/native-appsec@npm:5.0.0"
+"@datadog/native-appsec@npm:6.0.0":
+  version: 6.0.0
+  resolution: "@datadog/native-appsec@npm:6.0.0"
   dependencies:
     node-gyp: "npm:latest"
     node-gyp-build: "npm:^3.9.0"
-  checksum: 8b6934cba164bcca3c726929f14febd2891e64d921b74f261e1012cef07c1498ff2eca3c7b80d20597cfecf5adcbb4698ded4491265e14e82456b4544e15f44a
+  checksum: a8a204c521504e7e66780d38e7ac9dff13449e946d48388cf2efd52c46e4a17cb0923946300ce376cf2f1b6bb143afe6ec543e917405a7470dfb1f7bcec9fc6e
   languageName: node
   linkType: hard
 
-"@datadog/native-iast-rewriter@npm:2.2.1":
-  version: 2.2.1
-  resolution: "@datadog/native-iast-rewriter@npm:2.2.1"
+"@datadog/native-iast-rewriter@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@datadog/native-iast-rewriter@npm:2.2.2"
   dependencies:
     lru-cache: "npm:^7.14.0"
     node-gyp-build: "npm:^4.5.0"
-  checksum: 624b0c394244c45747dabc9d5233f4a14102ca802f868a06ee5ffe01555bcd4219de8e1599bac1da38b17fe1fec3f90b8f89df0187b3b37de142842aeec7779d
+  checksum: bbddc8866724961a65517f0382f65c71505f386e4bc047bd0ac1be2b00c3f9e1a62e8efca7af1df1230753ee7bdd388ea19b36e56d83fd13912a947189475979
   languageName: node
   linkType: hard
 
@@ -4227,11 +4227,11 @@ __metadata:
   linkType: hard
 
 "dd-trace@npm:^4.11.0":
-  version: 4.21.0
-  resolution: "dd-trace@npm:4.21.0"
+  version: 4.22.0
+  resolution: "dd-trace@npm:4.22.0"
   dependencies:
-    "@datadog/native-appsec": "npm:5.0.0"
-    "@datadog/native-iast-rewriter": "npm:2.2.1"
+    "@datadog/native-appsec": "npm:6.0.0"
+    "@datadog/native-iast-rewriter": "npm:2.2.2"
     "@datadog/native-iast-taint-tracking": "npm:1.6.4"
     "@datadog/native-metrics": "npm:^2.0.0"
     "@datadog/pprof": "npm:4.1.0"
@@ -4264,7 +4264,7 @@ __metadata:
     retry: "npm:^0.13.1"
     semver: "npm:^7.5.4"
     tlhunter-sorted-set: "npm:^0.1.0"
-  checksum: 5af021cfdb556d7bf0070d20ee45990601e3102aaccad7088bb1329474074ecacfdcd6f1139c395dd3ad9d7ad4da0dea4fca36f31ccab9b3e717e7393372632e
+  checksum: 402930961a05dd8b208218c515e15941fc45246bc5aea2fa4646d612740d7bdab25c5e0c1c7a24102e0f5793c1c83ad82c765376c0c1eb115e19833215874924
   languageName: node
   linkType: hard
 
