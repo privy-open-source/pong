@@ -42,7 +42,7 @@
     "defu": "^6.1.2",
     "destr": "^2.0.1",
     "nanoid": "^5.0.0",
-    "pino-http": "^8.3.3"
+    "pino-http": "^9.0.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
