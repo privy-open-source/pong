@@ -4367,8 +4367,8 @@ __metadata:
   linkType: hard
 
 "dd-trace@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "dd-trace@npm:5.1.0"
+  version: 5.2.0
+  resolution: "dd-trace@npm:5.2.0"
   dependencies:
     "@datadog/native-appsec": "npm:7.0.0"
     "@datadog/native-iast-rewriter": "npm:2.2.2"
@@ -4388,10 +4388,7 @@ __metadata:
     jest-docblock: "npm:^29.7.0"
     koalas: "npm:^1.0.2"
     limiter: "npm:1.1.5"
-    lodash.kebabcase: "npm:^4.1.1"
-    lodash.pick: "npm:^4.4.0"
     lodash.sortby: "npm:^4.7.0"
-    lodash.uniq: "npm:^4.5.0"
     lru-cache: "npm:^7.14.0"
     methods: "npm:^1.1.2"
     module-details-from-path: "npm:^1.0.3"
@@ -4404,7 +4401,7 @@ __metadata:
     retry: "npm:^0.13.1"
     semver: "npm:^7.5.4"
     tlhunter-sorted-set: "npm:^0.1.0"
-  checksum: 3bceb23f72888fa3da2b2ec79f7280dcd8315a0e8162bd78e901756a8b19fc978ba0481c2c805e09c165cca89fe97446c9ed2219606f89ef64386fa0667d6bc5
+  checksum: c7162e93aa292f71a460697efbc173706431db746775e63d81ba4df4319c647743d1b210dc415e4dead30715189501ac727aee0e8d34084a09b800be266db190
   languageName: node
   linkType: hard
 
@@ -7424,13 +7421,6 @@ __metadata:
   version: 3.1.0
   resolution: "lodash.isarguments@npm:3.1.0"
   checksum: e5186d5fe0384dcb0652501d9d04ebb984863ebc9c9faa2d4b9d5dfd81baef9ffe8e2887b9dc471d62ed092bc0788e5f1d42e45c72457a2884bbb54ac132ed92
-  languageName: node
-  linkType: hard
-
-"lodash.kebabcase@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "lodash.kebabcase@npm:4.1.1"
-  checksum: d84ec5441ef8e5c718c50315f35b0a045a77c7e8ee3e54472c06dc31f6f3602e95551a16c0923d689198b51deb8902c4bbc54fc9b965b26c1f86e21df3a05f34
   languageName: node
   linkType: hard
 
