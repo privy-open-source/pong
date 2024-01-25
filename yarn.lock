@@ -439,13 +439,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@datadog/native-appsec@npm:6.0.0":
-  version: 6.0.0
-  resolution: "@datadog/native-appsec@npm:6.0.0"
+"@datadog/native-appsec@npm:7.0.0":
+  version: 7.0.0
+  resolution: "@datadog/native-appsec@npm:7.0.0"
   dependencies:
     node-gyp: "npm:latest"
     node-gyp-build: "npm:^3.9.0"
-  checksum: a8a204c521504e7e66780d38e7ac9dff13449e946d48388cf2efd52c46e4a17cb0923946300ce376cf2f1b6bb143afe6ec543e917405a7470dfb1f7bcec9fc6e
+  checksum: ef72d89e9be686c4682e9e2b3cb89cf4ac1ce0130131b067a563a3687ae297740263b0640b3019b27fb6191c408e644f7e1376785b4e1bacf60e1897c433f63a
   languageName: node
   linkType: hard
 
@@ -4367,10 +4367,10 @@ __metadata:
   linkType: hard
 
 "dd-trace@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "dd-trace@npm:5.0.0"
+  version: 5.1.0
+  resolution: "dd-trace@npm:5.1.0"
   dependencies:
-    "@datadog/native-appsec": "npm:6.0.0"
+    "@datadog/native-appsec": "npm:7.0.0"
     "@datadog/native-iast-rewriter": "npm:2.2.2"
     "@datadog/native-iast-taint-tracking": "npm:1.6.4"
     "@datadog/native-metrics": "npm:^2.0.0"
@@ -4381,7 +4381,7 @@ __metadata:
     crypto-randomuuid: "npm:^1.0.0"
     dc-polyfill: "npm:^0.1.2"
     ignore: "npm:^5.2.4"
-    import-in-the-middle: "npm:^1.7.1"
+    import-in-the-middle: "npm:^1.7.3"
     int64-buffer: "npm:^0.1.9"
     ipaddr.js: "npm:^2.1.0"
     istanbul-lib-coverage: "npm:3.2.0"
@@ -4404,7 +4404,7 @@ __metadata:
     retry: "npm:^0.13.1"
     semver: "npm:^7.5.4"
     tlhunter-sorted-set: "npm:^0.1.0"
-  checksum: 82c803aa4b0f028ffb8c97c38d1ac22f9c9053c9bfae4debd39524a305ffb22aed44a6fc217e4a57a554b98d9ffafa24f35e2e1cd37b38b9d8fe7e9f9dab6d0e
+  checksum: 3bceb23f72888fa3da2b2ec79f7280dcd8315a0e8162bd78e901756a8b19fc978ba0481c2c805e09c165cca89fe97446c9ed2219606f89ef64386fa0667d6bc5
   languageName: node
   linkType: hard
 
@@ -6565,15 +6565,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-in-the-middle@npm:^1.7.1":
-  version: 1.7.2
-  resolution: "import-in-the-middle@npm:1.7.2"
+"import-in-the-middle@npm:^1.7.3":
+  version: 1.7.3
+  resolution: "import-in-the-middle@npm:1.7.3"
   dependencies:
     acorn: "npm:^8.8.2"
     acorn-import-assertions: "npm:^1.9.0"
     cjs-module-lexer: "npm:^1.2.2"
     module-details-from-path: "npm:^1.0.3"
-  checksum: 21d2e98047f1d37033a7f12a7518378ac023aaea9e6f1c865c1ff93f9b8c744687809030ce83141d56f05cc0d23c5ff75ae62be98c2af9e5f2df0f24495d7451
+  checksum: 7176dbb5c8b27bd9684a5ef0bf93c2929f98ee301a58ca75dd443a88f0cfe26fa1cfe80ca7326029cbc74701b61a3733623e019faa14acab1c1c393a89ac057b
   languageName: node
   linkType: hard
 
