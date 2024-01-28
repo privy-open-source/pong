@@ -1434,8 +1434,8 @@ __metadata:
   linkType: hard
 
 "@nuxt/test-utils@npm:>=3.9.0, @nuxt/test-utils@npm:^3.6.5":
-  version: 3.10.0
-  resolution: "@nuxt/test-utils@npm:3.10.0"
+  version: 3.11.0
+  resolution: "@nuxt/test-utils@npm:3.11.0"
   dependencies:
     "@nuxt/kit": "npm:^3.9.3"
     "@nuxt/schema": "npm:^3.9.3"
@@ -1468,7 +1468,7 @@ __metadata:
     "@vue/test-utils": ^2.4.2
     h3: "*"
     happy-dom: ^9.10.9 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
-    jsdom: ^22.0.0 || ^23.0.0
+    jsdom: ^22.0.0 || ^23.0.0 || ^24.0.0
     playwright-core: ^1.34.3
     vite: "*"
     vitest: ^0.34.6 || ^1.0.0
@@ -1493,7 +1493,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: 036d118a8d1534f8358da213de4bf7203ab54a58d559ddaf2f69da562080e19c17b1c7bece973eaa3f608cf8ced487378cac629f27f65e5bf609ce1c6d17a40c
+  checksum: 99333b083dde87718e38a2e10937be8c542241a4a4f5563728cfbb783fc4d3d052ad2d89dcea50b89f4d2a14fe70fc700d25a366e21a738a9f8f777fb6faf28d
   languageName: node
   linkType: hard
 
