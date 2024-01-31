@@ -956,11 +956,11 @@ __metadata:
   linkType: hard
 
 "@fingerprintjs/fingerprintjs@npm:^4.0.0":
-  version: 4.2.1
-  resolution: "@fingerprintjs/fingerprintjs@npm:4.2.1"
+  version: 4.2.2
+  resolution: "@fingerprintjs/fingerprintjs@npm:4.2.2"
   dependencies:
     tslib: "npm:^2.4.1"
-  checksum: a7df02b577c54fc0a3283847df5f44e004121fd779b9474a765970c9009bd423a63d987b61f2b5cc72ad3a5213b1239addbd6624d185891fe546195e7fd2ffca
+  checksum: f20437bfe7d0fba8c871bfd51ea80f20b14e734e0822ef43cd0bc3508cebdbb6bb44c39b590f49794530c28f7178064a94ef8fa9f9718d4c942103304c9e1ea7
   languageName: node
   linkType: hard
 
