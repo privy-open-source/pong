@@ -88,11 +88,7 @@ export default defineNuxtModule<ModuleOptions>({
       addServerPlugin(resolve('./runtime/logger'))
     }
 
-    if (options.nuapi && hasNuxtModule('@privyid/nuapi')) {
-      addPlugin({
-        src  : resolve('./runtime/nuapi'),
-        order: 20,
-      })
-    }
+    if (options.nuapi && hasNuxtModule('@privyid/nuapi'))
+      addPlugin(resolve('./runtime/nuapi'), { append: true })
   },
 })
