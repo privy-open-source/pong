@@ -1,7 +1,7 @@
 {
   "name": "@privyid/pong",
   "version": "0.3.0",
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.1.0",
   "description": "Service discovery, Log & Trace module",
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "@fingerprintjs/fingerprintjs": "^4.0.0",
     "@nuxt/kit": "^3.6.5",
     "browserslist-ua-parser": "^1.0.1",
-    "dd-trace": "^4.11.0",
+    "dd-trace": "^5.0.0",
     "defu": "^6.1.2",
     "destr": "^2.0.1",
     "pino-http": "^8.3.3",
