@@ -6,7 +6,7 @@ import {
   getRequestURL,
   getResponseStatus,
 } from 'h3'
-import { nanoid } from 'nanoid'
+import { v4 as uuidv4 } from 'uuid'
 import { parseUA } from 'browserslist-ua-parser'
 import destr from 'destr'
 
@@ -44,7 +44,7 @@ export function useLogger () {
         const event = createEvent(req, res)
         const reqId = getHeader(event, 'X-Request-Id')
 
-        return reqId ?? nanoid()
+        return reqId ?? uuidv4()
       },
       customLogLevel (req, res, err) {
         if (res.statusCode >= 400 && res.statusCode < 500)

@@ -1,19 +1,40 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import {
   defineNuxtPlugin,
   useRoute,
   useState,
+  ref,
+  watch,
+  type Ref,
 } from '#imports'
 import { onRequest } from '@privyid/nuapi/core'
-import { nanoid } from 'nanoid'
+import { v4 as uuidv4 } from 'uuid'
 import { env } from 'std-env'
 
-export default defineNuxtPlugin(() => {
-  const route       = useRoute()
-  const appName     = useState(() => env.APP_NAME)
-  const appVersion  = useState(() => (env.APP_VERSION ?? env.BUILD_VERSION))
-  const appPlatform = useState(() => env.APP_PLATFORM)
+/**
+ * Waiting loading ref to false
+ * @param loading
+ */
+async function waitLoading (loading: Ref<boolean>) {
+  await new Promise<void>((resolve) => {
+    const stop = watch(loading, (value) => {
+      if (!value) {
+        stop()
+        resolve()
+      }
+    }, { immediate: true })
+  })
+}
 
-  let browserId: string
+export default defineNuxtPlugin(() => {
+  const isLoading = ref(false)
+  const browserId = ref()
+  const route     = useRoute()
+
+  const appName      = useState(() => env.APP_NAME)
+  const appVersion   = useState(() => env.APP_VERSION || env.BUILD_VERSION)
+  const platformName = useState(() => env.APP_PLATFORM_NAME || env.PLATFORM_NAME)
+  const platformType = useState(() => env.APP_PLATFORM_TYPE || env.PLATFORM_TYPE)
 
   onRequest(async (config) => {
     if (config.headers) {
@@ -21,7 +42,7 @@ export default defineNuxtPlugin(() => {
        * Add Request ID
        */
       if (!config.headers['X-Request-Id'])
-        config.headers['X-Request-Id'] = nanoid()
+        config.headers['X-Request-Id'] = uuidv4()
 
       /**
        * Add Request timestamp
@@ -33,34 +54,51 @@ export default defineNuxtPlugin(() => {
        * Add Browser's fingerprint
        */
       if (!config.headers['X-Browser-Id'] && process.client) {
-        if (!browserId) {
-          const { default: FpJS } = await import('@fingerprintjs/fingerprintjs')
-          const fp                = await FpJS.load()
-          const result            = await fp.get()
+        // Prevent double request
+        if (isLoading.value)
+          await waitLoading(isLoading)
 
-          browserId = result.visitorId
+        if (!browserId.value) {
+          try {
+            isLoading.value = true
+
+            const { default: FpJS } = await import('@fingerprintjs/fingerprintjs')
+            const fp                = await FpJS.load()
+            const result            = await fp.get()
+
+            browserId.value = result.visitorId
+          } finally {
+            isLoading.value = false
+          }
         }
 
-        config.headers['X-Browser-Id'] = browserId
+        if (browserId.value)
+          config.headers['X-Browser-Id'] = browserId.value
       }
 
       /**
        * Add Application name
        */
-      if (!config.headers['X-Application-Name'])
-        config.headers['X-Application-Name'] = appName.value ?? '-'
+      if (!config.headers['X-Application-Name'] && appName.value)
+        config.headers['X-Application-Name'] = appName.value
 
       /**
        * Add Application version
        */
-      if (!config.headers['X-Application-Version'])
-        config.headers['X-Application-Version'] = appVersion.value ?? '-'
+      if (!config.headers['X-Application-Version'] && appVersion.value)
+        config.headers['X-Application-Version'] = appVersion.value
 
       /**
        * Add Platform name
        */
-      if (!config.headers['X-Platform-Name'])
-        config.headers['X-Platform-Name'] = appPlatform.value ?? 'web'
+      if (!config.headers['X-Platform-Name'] && platformName.value)
+        config.headers['X-Platform-Name'] = platformName.value
+
+      /**
+       * Add Platform type
+       */
+      if (!config.headers['X-Platform-Type'] && platformType.value)
+        config.headers['X-Platform-Type'] = platformType.value
 
       /**
        * Add Testing mode
