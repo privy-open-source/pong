@@ -1917,7 +1917,7 @@ __metadata:
     eslint-plugin-varspacing: "npm:^1.2.2"
     eslint-plugin-vue: "npm:^9.9.0"
     nuxt: "npm:^3.6.5"
-    pino-http: "npm:^8.3.3"
+    pino-http: "npm:^9.0.0"
     typescript: "npm:^5.1.6"
     uuid: "npm:^9.0.1"
     vitest: "npm:^1.0.0"
@@ -9370,15 +9370,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino-http@npm:^8.3.3":
-  version: 8.6.1
-  resolution: "pino-http@npm:8.6.1"
+"pino-http@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "pino-http@npm:9.0.0"
   dependencies:
     get-caller-file: "npm:^2.0.5"
     pino: "npm:^8.17.1"
     pino-std-serializers: "npm:^6.2.2"
     process-warning: "npm:^3.0.0"
-  checksum: 10/b7192a89af1d6457ae532673bc96360c4eb50c43df8061194605680942de960bcd8daa713aa33d3a93eca0ecc8ab53052c01b5117b7847844c8f743eaec537ec
+  checksum: 10/12a0b016c62c1f4e7d506f6a690d10b7ccdbb5868fba8156a1bf515143e522087f87ce83a732615773e903271468c308d5f5eb908ca5446208803da119025fdf
   languageName: node
   linkType: hard
 
