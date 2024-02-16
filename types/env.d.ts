@@ -4,7 +4,8 @@
 interface ImportMetaEnv {
   readonly APP_NAME: string,
   readonly APP_VERSION: string,
-  readonly APP_PLATFORM: string,
+  readonly APP_PLATFORM_NAME: string,
+  readonly APP_PLATFORM_TYPE: string,
 
   readonly BUILD_VERSION: string,
   readonly BUILD_DATE: string,
@@ -20,7 +21,8 @@ declare global {
     interface ProcessEnv {
       readonly APP_NAME: string,
       readonly APP_VERSION: string,
-      readonly APP_PLATFORM: string,
+      readonly APP_PLATFORM_NAME: string,
+      readonly APP_PLATFORM_TYPE: string,
 
       readonly BUILD_VERSION: string,
       readonly BUILD_DATE: string,

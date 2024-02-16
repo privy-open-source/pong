@@ -31,25 +31,13 @@ export default defineNuxtPlugin(() => {
   const browserId = ref()
   const route     = useRoute()
 
-  const appName      = useState(() => env.APP_NAME)
-  const appVersion   = useState(() => env.APP_VERSION || env.BUILD_VERSION)
-  const platformName = useState(() => env.APP_PLATFORM_NAME || env.PLATFORM_NAME)
-  const platformType = useState(() => env.APP_PLATFORM_TYPE || env.PLATFORM_TYPE)
+  const appName      = useState('appName', () => env.APP_NAME)
+  const appVersion   = useState('appVersion', () => env.APP_VERSION || env.BUILD_VERSION)
+  const platformName = useState('platformName', () => env.APP_PLATFORM_NAME || env.PLATFORM_NAME)
+  const platformType = useState('platformType', () => env.APP_PLATFORM_TYPE || env.PLATFORM_TYPE)
 
   onRequest(async (config) => {
     if (config.headers) {
-      /**
-       * Add Request ID
-       */
-      if (!config.headers['X-Request-Id'])
-        config.headers['X-Request-Id'] = uuidv4()
-
-      /**
-       * Add Request timestamp
-       */
-      if (!config.headers['X-Request-Timestamp'])
-        config.headers['X-Request-Timestamp'] = Date.now().toString()
-
       /**
        * Add Browser's fingerprint
        */
@@ -105,6 +93,18 @@ export default defineNuxtPlugin(() => {
        */
       if (route.query.testing === 'true')
         config.headers['X-Testing-Mode'] = true
+
+      /**
+       * Add Request ID
+       */
+      if (!config.headers['X-Request-Id'])
+        config.headers['X-Request-Id'] = uuidv4()
+
+      /**
+       * Add Request timestamp
+       */
+      if (!config.headers['X-Request-Timestamp'])
+        config.headers['X-Request-Timestamp'] = Date.now().toString()
     }
 
     return config
