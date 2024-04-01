@@ -4736,14 +4736,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"destr@npm:^2.0.0, destr@npm:^2.0.1, destr@npm:^2.0.2":
-  version: 2.0.2
-  resolution: "destr@npm:2.0.2"
-  checksum: 10/ed8c963cd606407075f03c62b94d5641653ea2210cfec7279e6146da08476c8d293c4bff9280aa65cb1cf67ef3044890b3ee709578ec43de020a77233d6f4698
-  languageName: node
-  linkType: hard
-
-"destr@npm:^2.0.3":
+"destr@npm:^2.0.0, destr@npm:^2.0.1, destr@npm:^2.0.2, destr@npm:^2.0.3":
   version: 2.0.3
   resolution: "destr@npm:2.0.3"
   checksum: 10/dbb756baa876810ec0ca4bcb702d86cc3b480ed14f36bf5747718ed211f96bca5520b63a4109eb181ad940ee2a645677d9a63d4a0ed11a7510619dae97317201
