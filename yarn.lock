@@ -1477,7 +1477,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/schema@npm:3.10.3, @nuxt/schema@npm:^3.6.5, @nuxt/schema@npm:^3.7.4, @nuxt/schema@npm:^3.9.1, @nuxt/schema@npm:^3.9.3":
+"@nuxt/schema@npm:3.10.3, @nuxt/schema@npm:^3.7.4, @nuxt/schema@npm:^3.9.1, @nuxt/schema@npm:^3.9.3":
   version: 3.10.3
   resolution: "@nuxt/schema@npm:3.10.3"
   dependencies:
@@ -1523,7 +1523,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/test-utils@npm:>=3.9.0, @nuxt/test-utils@npm:^3.6.5":
+"@nuxt/test-utils@npm:3.11.0, @nuxt/test-utils@npm:>=3.9.0":
   version: 3.11.0
   resolution: "@nuxt/test-utils@npm:3.11.0"
   dependencies:
@@ -1888,8 +1888,8 @@ __metadata:
     "@nuxt/devtools": "npm:latest"
     "@nuxt/kit": "npm:^3.6.5"
     "@nuxt/module-builder": "npm:0.5.5"
-    "@nuxt/schema": "npm:^3.6.5"
-    "@nuxt/test-utils": "npm:^3.6.5"
+    "@nuxt/schema": "npm:3.10.3"
+    "@nuxt/test-utils": "npm:3.11.0"
     "@privyid/eslint-config-persona": "npm:0.27.0"
     "@privyid/nhp": "npm:0.4.1"
     "@privyid/nuapi": "npm:0.3.0-alpha.4"
@@ -1914,7 +1914,7 @@ __metadata:
     eslint-plugin-unicorn: "npm:47.0.0"
     eslint-plugin-varspacing: "npm:1.2.2"
     eslint-plugin-vue: "npm:9.25.0"
-    nuxt: "npm:^3.6.5"
+    nuxt: "npm:3.10.3"
     pino-http: "npm:^9.0.0"
     typescript: "npm:5.4.5"
     uuid: "npm:^9.0.1"
@@ -8740,7 +8740,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt@npm:^3.6.5":
+"nuxt@npm:3.10.3":
   version: 3.10.3
   resolution: "nuxt@npm:3.10.3"
   dependencies:
