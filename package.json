@@ -47,8 +47,8 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/module-builder": "0.5.5",
-    "@nuxt/schema": "3.10.3",
-    "@nuxt/test-utils": "3.11.0",
+    "@nuxt/schema": "3.11.2",
+    "@nuxt/test-utils": "3.12.1",
     "@privyid/eslint-config-persona": "0.27.0",
     "@privyid/nhp": "0.4.2",
     "@privyid/nuapi": "0.3.0-alpha.4",
@@ -70,7 +70,7 @@
     "eslint-plugin-unicorn": "47.0.0",
     "eslint-plugin-varspacing": "1.2.2",
     "eslint-plugin-vue": "9.25.0",
-    "nuxt": "3.10.3",
+    "nuxt": "3.11.2",
     "typescript": "5.4.5",
     "vitest": "1.5.0"
   },
