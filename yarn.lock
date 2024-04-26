@@ -1706,22 +1706,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/module-builder@npm:0.5.5":
-  version: 0.5.5
-  resolution: "@nuxt/module-builder@npm:0.5.5"
+"@nuxt/module-builder@npm:0.6.0":
+  version: 0.6.0
+  resolution: "@nuxt/module-builder@npm:0.6.0"
   dependencies:
-    citty: "npm:^0.1.5"
+    citty: "npm:^0.1.6"
     consola: "npm:^3.2.3"
-    mlly: "npm:^1.4.2"
-    pathe: "npm:^1.1.1"
+    defu: "npm:^6.1.4"
+    mlly: "npm:^1.6.1"
+    pathe: "npm:^1.1.2"
+    pkg-types: "npm:^1.1.0"
     unbuild: "npm:^2.0.0"
   peerDependencies:
-    "@nuxt/kit": ^3.8.2
-    nuxi: ^3.10.0
+    "@nuxt/kit": ^3.11.2
+    nuxi: ^3.11.1
   bin:
     nuxt-build-module: dist/cli.mjs
     nuxt-module-build: dist/cli.mjs
-  checksum: 10/f83f51bcf6c87d161ec3912762b365ca55dd65da28f615d6c837152e3f486183b85993a4497e9144cc4f69db6dfd10dbfcf7e7096b20f4c6e7e56b74e0e5b2d8
+  checksum: 10/059bccfc68e9226e6f50702dce4cf9ed994d26b271e4eaa79e1407756674089a8dcdb8a41279a0c9b8fce578e20781e8ff3498ecbf4d6d72eadbfbbef78d878e
   languageName: node
   linkType: hard
 
@@ -2373,7 +2375,7 @@ __metadata:
     "@fingerprintjs/fingerprintjs": "npm:^4.0.0"
     "@nuxt/devtools": "npm:latest"
     "@nuxt/kit": "npm:^3.6.5"
-    "@nuxt/module-builder": "npm:0.5.5"
+    "@nuxt/module-builder": "npm:0.6.0"
     "@nuxt/schema": "npm:3.11.2"
     "@nuxt/test-utils": "npm:3.12.1"
     "@privyid/eslint-config-persona": "npm:0.27.0"
