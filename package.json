@@ -72,7 +72,7 @@
     "eslint-plugin-vue": "9.25.0",
     "nuxt": "3.11.2",
     "typescript": "5.4.5",
-    "vitest": "1.5.2"
+    "vitest": "1.5.3"
   },
   "peerDependencies": {
     "@privyid/nuapi": "*"
