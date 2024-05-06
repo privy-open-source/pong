@@ -41,7 +41,7 @@
     "dd-trace": "^5.0.0",
     "defu": "^6.1.2",
     "destr": "^2.0.1",
-    "pino-http": "^9.0.0",
+    "pino-http": "^10.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
