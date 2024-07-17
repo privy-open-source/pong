@@ -42,7 +42,7 @@
     "defu": "^6.1.2",
     "destr": "^2.0.1",
     "pino-http": "^10.0.0",
-    "uuid": "^9.0.1"
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -54,7 +54,7 @@
     "@privyid/nuapi": "0.3.0-alpha.4",
     "@types/node": "20.14.9",
     "@types/simple-oauth2": "5.0.7",
-    "@types/uuid": "9.0.8",
+    "@types/uuid": "10.0.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "@vue/eslint-config-typescript": "13.0.0",
