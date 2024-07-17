@@ -2283,24 +2283,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/module-builder@npm:0.6.0":
-  version: 0.6.0
-  resolution: "@nuxt/module-builder@npm:0.6.0"
+"@nuxt/module-builder@npm:0.8.1":
+  version: 0.8.1
+  resolution: "@nuxt/module-builder@npm:0.8.1"
   dependencies:
     citty: "npm:^0.1.6"
     consola: "npm:^3.2.3"
     defu: "npm:^6.1.4"
-    mlly: "npm:^1.6.1"
+    magic-regexp: "npm:^0.8.0"
+    mlly: "npm:^1.7.1"
     pathe: "npm:^1.1.2"
-    pkg-types: "npm:^1.1.0"
+    pkg-types: "npm:^1.1.1"
+    tsconfck: "npm:^3.1.1"
     unbuild: "npm:^2.0.0"
   peerDependencies:
-    "@nuxt/kit": ^3.11.2
-    nuxi: ^3.11.1
+    "@nuxt/kit": ^3.12.2
+    nuxi: ^3.12.0
   bin:
     nuxt-build-module: dist/cli.mjs
     nuxt-module-build: dist/cli.mjs
-  checksum: 10/059bccfc68e9226e6f50702dce4cf9ed994d26b271e4eaa79e1407756674089a8dcdb8a41279a0c9b8fce578e20781e8ff3498ecbf4d6d72eadbfbbef78d878e
+  checksum: 10/e9a87585bf3473fce6c2932a123ca72c8efcc440b8a615a92efed9d5366a1c3f1a18cc60199626883086af2e1fe6efac048ab57fb7508fe17b91f167dccde02f
   languageName: node
   linkType: hard
 
@@ -3239,7 +3241,7 @@ __metadata:
     "@fingerprintjs/fingerprintjs": "npm:^4.0.0"
     "@nuxt/devtools": "npm:latest"
     "@nuxt/kit": "npm:^3.6.5"
-    "@nuxt/module-builder": "npm:0.6.0"
+    "@nuxt/module-builder": "npm:0.8.1"
     "@nuxt/schema": "npm:3.12.3"
     "@nuxt/test-utils": "npm:3.13.1"
     "@privyid/eslint-config-persona": "npm:0.27.0"
@@ -10091,6 +10093,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"magic-regexp@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "magic-regexp@npm:0.8.0"
+  dependencies:
+    estree-walker: "npm:^3.0.3"
+    magic-string: "npm:^0.30.8"
+    mlly: "npm:^1.6.1"
+    regexp-tree: "npm:^0.1.27"
+    type-level-regexp: "npm:~0.1.17"
+    ufo: "npm:^1.4.0"
+    unplugin: "npm:^1.8.3"
+  checksum: 10/acb175161c5b57bad488ec54c7581eabd62a5ac08631322765ff8262add7e9c1ecd3aa0a025727041e08fc75ebb45b0dc1ec08e6b23b2fafdd7a5b3d9334172a
+  languageName: node
+  linkType: hard
+
 "magic-string-ast@npm:^0.6.0":
   version: 0.6.2
   resolution: "magic-string-ast@npm:0.6.2"
@@ -11880,17 +11897,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pkg-types@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "pkg-types@npm:1.1.0"
-  dependencies:
-    confbox: "npm:^0.1.7"
-    mlly: "npm:^1.6.1"
-    pathe: "npm:^1.1.2"
-  checksum: 10/c1e32a54a1ae00205eb769f6cdae1f0ed4389c785963875b2d53ce7445ac8f762d0e837a84b1ab802375f1f8f7fd0639ceaf81fc9bb9be84c360a3a9ddbddbae
-  languageName: node
-  linkType: hard
-
 "pkg-types@npm:^1.1.1, pkg-types@npm:^1.1.2":
   version: 1.1.3
   resolution: "pkg-types@npm:1.1.3"
@@ -12972,7 +12978,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regexp-tree@npm:^0.1.24, regexp-tree@npm:~0.1.1":
+"regexp-tree@npm:^0.1.24, regexp-tree@npm:^0.1.27, regexp-tree@npm:~0.1.1":
   version: 0.1.27
   resolution: "regexp-tree@npm:0.1.27"
   bin:
@@ -14389,6 +14395,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tsconfck@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "tsconfck@npm:3.1.1"
+  peerDependencies:
+    typescript: ^5.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  bin:
+    tsconfck: bin/tsconfck.js
+  checksum: 10/a4456577f540212516d7eb530005893739aadd6da00787914a8ed9aa19c3f2f306b8912920aa440b9b8978f10c9dadbd062b8c2a2f0ff1f6c2d4272b5be2ef34
+  languageName: node
+  linkType: hard
+
 "tsconfig-paths@npm:^3.15.0":
   version: 3.15.0
   resolution: "tsconfig-paths@npm:3.15.0"
@@ -14492,6 +14512,13 @@ __metadata:
   version: 4.8.3
   resolution: "type-fest@npm:4.8.3"
   checksum: 10/90e440347c542282b0a92bb181fb30af529be6d6820dd7ec6141309f2ca143855a8fbca18969623b19bc15a3dcce6000af19f97cae81a39fbd2638c15a06d078
+  languageName: node
+  linkType: hard
+
+"type-level-regexp@npm:~0.1.17":
+  version: 0.1.17
+  resolution: "type-level-regexp@npm:0.1.17"
+  checksum: 10/1f6047c6e8af947aa80befd24cf1e9a3fff654d3dea61c1c15feb9bac8c02cd73e29dbdd34f5d7880589755ce6de4de5d56c4f5b8e7b4836ad1bb909afa5f493
   languageName: node
   linkType: hard
 
@@ -14899,7 +14926,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin@npm:^1.11.0":
+"unplugin@npm:^1.11.0, unplugin@npm:^1.8.3":
   version: 1.11.0
   resolution: "unplugin@npm:1.11.0"
   dependencies:
