@@ -8,27 +8,30 @@ import {
 } from 'h3'
 import { v4 as uuidv4 } from 'uuid'
 import { parseUA } from 'browserslist-ua-parser'
-import destr from 'destr'
+import {
+  parseJWT,
+  isUUID,
+  parseScreen,
+} from './utils'
+import tracer from './tracer'
 
 let logger: HttpLogger
-
-/**
- * Extract user from JWT token
- * @param header header string
- */
-function extractJWT (header: string) {
-  const [, token]   = header.split(' ')
-  const [, payload] = token.split('.')
-
-  return destr<any>(Buffer.from(payload, 'base64').toString('utf8'))
-    ?.user
-}
 
 export function useLogger () {
   if (!logger) {
     const config   = useRuntimeConfig()
     const pinoHttp = PinoHttp({
-      redact    : config.pong.loggerRedact,
+      redact: config.pong.loggerRedact,
+      mixin (context, _) {
+        if (config.pong.tracer) {
+          const span = tracer?.scope()?.active()
+
+          if (span)
+            tracer.inject(span.context(), 'log', context)
+        }
+
+        return context
+      },
       formatters: {
         level: (label) => {
           return { level: label }
@@ -44,7 +47,7 @@ export function useLogger () {
         const event = createEvent(req, res)
         const reqId = getHeader(event, 'X-Request-Id')
 
-        return reqId ?? uuidv4()
+        return reqId && isUUID(reqId) ? reqId : uuidv4()
       },
       customLogLevel (req, res, err) {
         if (res.statusCode >= 400 && res.statusCode < 500)
@@ -57,13 +60,15 @@ export function useLogger () {
         return 'info'
       },
       customProps (req, res) {
-        const event = createEvent(req, res)
-        const ua    = getHeader(event, 'User-Agent')
-        const auth  = getHeader(event, 'Authorization')
+        const event  = createEvent(req, res)
+        const ua     = getHeader(event, 'User-Agent')
+        const auth   = getHeader(event, 'Authorization')
+        const screen = getHeader(event, 'X-Browser-Screen')
 
         return {
           browser: ua ? parseUA(ua) : { browser: 'unknown', version: 'unknown' },
-          user   : auth?.startsWith('Bearer') ? extractJWT(auth) : undefined,
+          screen : screen ? parseScreen(screen) : undefined,
+          user   : auth?.startsWith('Bearer') ? parseJWT(auth) : undefined,
           http   : {
             request_id : req.id,
             version    : req.httpVersion,

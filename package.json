@@ -25,7 +25,7 @@
   "scripts": {
     "prepack": "yarn build",
     "build": "nuxt-module-build build",
-    "dev": "nuxi dev playground",
+    "dev": "nuxi dev playground | pino-pretty",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.0.0",
-    "@nuxt/kit": "^3.6.5",
+    "@nuxt/kit": "^3.12.4",
     "browserslist-ua-parser": "^1.0.1",
     "dd-trace": "^5.0.0",
     "defu": "^6.1.2",
@@ -45,13 +45,13 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "1.2.0",
     "@nuxt/module-builder": "0.5.5",
-    "@nuxt/schema": "3.11.2",
+    "@nuxt/schema": "3.12.4",
     "@nuxt/test-utils": "3.12.1",
     "@privyid/eslint-config-persona": "0.27.0",
     "@privyid/nhp": "0.4.2",
-    "@privyid/nuapi": "0.3.0-alpha.4",
+    "@privyid/nuapi": "0.3.0-alpha.5",
     "@types/node": "20.12.7",
     "@types/simple-oauth2": "5.0.7",
     "@types/uuid": "9.0.8",
@@ -64,18 +64,18 @@
     "eslint-formatter-pretty": "5.0.0",
     "eslint-plugin-align-assignments": "1.1.2",
     "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-n": "16.6.2",
     "eslint-plugin-n": "14.0.0",
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-unicorn": "47.0.0",
     "eslint-plugin-varspacing": "1.2.2",
     "eslint-plugin-vue": "9.25.0",
-    "nuxt": "3.11.2",
+    "nuxt": "^3.12.4",
+    "pino-pretty": "^11.2.1",
     "typescript": "5.4.5",
     "vitest": "1.5.2"
   },
   "peerDependencies": {
-    "@privyid/nuapi": "*"
+    "@privyid/nuapi": ">=0.3.0-alpha.5"
   },
   "peerDependenciesMeta": {
     "@privyid/nuapi": {
