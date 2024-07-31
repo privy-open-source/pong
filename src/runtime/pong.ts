@@ -15,6 +15,9 @@ export default defineEventHandler(() => {
       app_version  : env.BUILD_VERSION || env.APP_VERSION || '-',
       platform_name: env.APP_PLATFORM_NAME || env.PLATFORM_NAME || '-',
       platform_type: env.APP_PLATFORM_TYPE || env.PLATFORM_TYPE || '-',
+      dd_env       : env.DD_ENV || '-',
+      dd_service   : env.DD_SERVICE || '-',
+      dd_version   : env.DD_VERSION || '-',
       config       : config.pong.debug ? config.public : undefined,
     },
   }
