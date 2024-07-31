@@ -6,36 +6,56 @@ import {
 } from 'node:http'
 import { parsePath, withBase } from 'ufo'
 import { createEvent, getRequestURL } from 'h3'
-
-const UUID_REGEX = /\/[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}/gi
-const ID_REGEX   = /\/\d+/gi
+import { replaceId } from './utils'
 
 const tracer = ddTrace.init({ logInjection: true })
 
-function replaceId (name: string) {
-  return name
-    .replaceAll(UUID_REGEX, '/{id}')
-    .replaceAll(ID_REGEX, '/{id}')
+function traceInBound (span: ddTrace.Span, req: IncomingMessage, res: ServerResponse<IncomingMessage>) {
+  const event = createEvent(req, res)
+  const url   = getRequestURL(event)
+  const name  = replaceId(`${event.method} ${url.pathname}`)
+
+  span.setTag('resource.name', name)
 }
 
+function traceOutBound (span: ddTrace.Span, req: ClientRequest, _res?: IncomingMessage) {
+  const path = parsePath(req.path)
+  const url  = withBase(path.pathname, `${req.protocol}://${req.host}`)
+  const name = replaceId(`${req.method} ${url}`)
+
+  span.setTag('resource.name', name)
+}
+
+tracer.use('net', false)
+
+tracer.use('dns', false)
+
+tracer.use('pino', false)
+
 tracer.use('http', {
+  blocklist: [
+    '/favicon.ico',
+    '/robots.txt',
+    (path) => path.startsWith('/_'),
+  ],
   hooks: {
-    request: (span, req, res) => {
-      if (req instanceof IncomingMessage) {
-        const event = createEvent(req, res as ServerResponse<IncomingMessage>)
-        const url   = getRequestURL(event)
-        const name  = replaceId(`${event.method} ${url.pathname}`)
+    request (span, req, res) {
+      if (span) {
+        if (req instanceof IncomingMessage)
+          traceInBound(span, req, res as ServerResponse<IncomingMessage>)
 
-        span?.setTag('resource.name', name)
+        if (req instanceof ClientRequest)
+          traceOutBound(span, req, res as IncomingMessage)
       }
+    },
+  },
+})
 
-      if (req instanceof ClientRequest) {
-        const path = parsePath(req.path)
-        const url  = withBase(path.pathname, req.host)
-        const name = replaceId(`${req.method} ${url}`)
-
-        span?.setTag('resource.name', name)
-      }
+tracer.use('fetch', {
+  hooks: {
+    request (span, req, res) {
+      if (req && span)
+        traceOutBound(span, req, res)
     },
   },
 })

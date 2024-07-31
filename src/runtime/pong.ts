@@ -12,7 +12,7 @@ export default defineEventHandler(() => {
     data   : {
       time         : (new Date()).toISOString(),
       app_name     : env.APP_NAME || '-',
-      app_version  : env.APP_VERSION || env.BUILD_VERSION || '-',
+      app_version  : env.BUILD_VERSION || env.APP_VERSION || '-',
       platform_name: env.APP_PLATFORM_NAME || env.PLATFORM_NAME || '-',
       platform_type: env.APP_PLATFORM_TYPE || env.PLATFORM_TYPE || '-',
       config       : config.pong.debug ? config.public : undefined,

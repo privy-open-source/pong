@@ -49,8 +49,9 @@ export interface ModulePrivateRuntimeConfig {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name     : '@privyid/pong',
-    configKey: 'pong',
+    name         : '@privyid/pong',
+    configKey    : 'pong',
+    compatibility: { nuxt: '>=3.4.0' },
   },
   // Default configuration options of the Nuxt module
   defaults: {
@@ -89,6 +90,6 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     if (options.nuapi && hasNuxtModule('@privyid/nuapi'))
-      addPlugin(resolve('./runtime/nuapi'), { append: true })
+      addPlugin(resolve('./runtime/nuapi'))
   },
 })
