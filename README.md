@@ -53,8 +53,8 @@ That's it! You can now use Pong in your Nuxt app ✨
 If you using datadog, don't forget to set these ENV to make sure tracer work properly:
 
 ```sh
-DD_ENV= # App enviroment, ex: cartenzs-development or  cartenzs-production
-DD_SERVICE= # Your service name, ex: cartenzs-web-app
+DD_ENV= # App enviroment, ex: development-cartenzs or  production-cartensz
+DD_SERVICE= # Your service name, ex: cartensz-web-app
 DD_VERSION= # (Optional) Your service version, ex: 1.0.0
 ```
 

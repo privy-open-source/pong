@@ -2045,7 +2045,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/schema@npm:3.12.4, @nuxt/schema@npm:^3.11.2, @nuxt/schema@npm:^3.12.3, @nuxt/schema@npm:^3.12.4":
+"@nuxt/schema@npm:3.12.4, @nuxt/schema@npm:^3.12.3, @nuxt/schema@npm:^3.12.4":
   version: 3.12.4
   resolution: "@nuxt/schema@npm:3.12.4"
   dependencies:

@@ -36,6 +36,7 @@ tracer.use('http', {
   blocklist: [
     '/favicon.ico',
     '/robots.txt',
+    '/ping',
     (path) => path.startsWith('/_'),
   ],
   hooks: {
