@@ -1,3 +1,4 @@
+import tracer from './tracer'
 import PinoHttp, { type HttpLogger } from 'pino-http'
 import { useRuntimeConfig } from '#imports'
 import {
@@ -13,7 +14,6 @@ import {
   isUUID,
   parseScreen,
 } from './utils'
-import tracer from './tracer'
 
 let logger: HttpLogger
 
