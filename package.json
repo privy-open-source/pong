@@ -1,7 +1,7 @@
 {
   "name": "@privyid/pong",
   "version": "0.5.0",
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.1",
   "description": "Service discovery, Log & Trace module",
   "repository": {
     "type": "git",
@@ -45,14 +45,14 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@nuxt/devtools": "1.3.9",
-    "@nuxt/module-builder": "0.8.1",
+    "@nuxt/devtools": "1.4.2",
+    "@nuxt/module-builder": "0.8.3",
     "@nuxt/schema": "3.12.4",
     "@nuxt/test-utils": "3.14.0",
     "@privyid/eslint-config-persona": "0.27.0",
-    "@privyid/nhp": "0.4.2",
-    "@privyid/nuapi": "0.3.0-alpha.5",
-    "@types/node": "20.14.13",
+    "@privyid/nhp": "1.0.0",
+    "@privyid/nuapi": "0.3.0-alpha.6",
+    "@types/node": "20.16.5",
     "@types/simple-oauth2": "5.0.7",
     "@types/uuid": "10.0.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
@@ -63,15 +63,15 @@
     "eslint-config-standard-with-typescript": "35.0.0",
     "eslint-formatter-pretty": "5.0.0",
     "eslint-plugin-align-assignments": "1.1.2",
-    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-import": "2.30.0",
     "eslint-plugin-n": "14.0.0",
     "eslint-plugin-promise": "6.6.0",
     "eslint-plugin-unicorn": "47.0.0",
     "eslint-plugin-varspacing": "1.2.2",
-    "eslint-plugin-vue": "9.27.0",
+    "eslint-plugin-vue": "9.28.0",
     "nuxt": "3.12.4",
-    "typescript": "5.5.4",
-    "vitest": "2.0.4"
+    "typescript": "5.6.2",
+    "vitest": "2.0.5"
   },
   "peerDependencies": {
     "@privyid/nuapi": ">=0.3.0-alpha.5"
