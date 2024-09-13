@@ -16,6 +16,16 @@ import {
 } from 'h3'
 import { replaceId } from './utils'
 
+declare module 'http' {
+  export interface IncomingMessage {
+    body?: any,
+  }
+
+  export interface ServerResponse {
+    body?: any,
+  }
+}
+
 const tracer = ddTrace.init({ logInjection: true })
 
 tracer.use('net', false)
@@ -41,6 +51,12 @@ tracer.use('http', {
           span.setTag('resource.name', name)
           span.setTag('http.request_id', id)
           span.setTag('http.referer', getRequestHeader(event, 'Referer'))
+          span.setTag('http.request.body', req.body)
+
+          if (res) {
+            span.setTag('http.response.status_code', res.statusCode)
+            span.setTag('http.response.body', res.body)
+          }
         }
 
         if (req instanceof ClientRequest) {

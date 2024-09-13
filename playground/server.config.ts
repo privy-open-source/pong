@@ -1,5 +1,5 @@
 import { getCookie, setHeader } from 'h3'
-import { defineServer, defineEventInterceptor } from '@privyid/nhp/core'
+import { defineServer, defineEventInterceptor } from '../src/nhp'
 
 export default defineServer([
   {

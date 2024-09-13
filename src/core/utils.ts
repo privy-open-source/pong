@@ -26,7 +26,7 @@ export function replaceId (name: string) {
  * @returns
  */
 export function isUUID (value: string) {
-  return UUID_REGEX.test(value)
+  return typeof value === 'string' && UUID_REGEX.test(value)
 }
 
 /**
