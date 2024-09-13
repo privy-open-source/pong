@@ -6,6 +6,13 @@ export default defineBuildConfig({
       input  : './src/core/',
       builder: 'mkdist',
       outDir : 'dist/core',
+      ext    : 'js',
+    },
+    {
+      input  : './src/nhp/',
+      builder: 'mkdist',
+      outDir : 'dist/nhp',
+      ext    : 'js',
     },
   ],
   externals  : ['#imports'],

@@ -58,6 +58,39 @@ DD_SERVICE= # Your service name, ex: cartensz-web-app
 DD_VERSION= # (Optional) Your service version, ex: 1.0.0
 ```
 
+## NHP Trace Proxy Body
+
+By default, Pong not trace any requests / responses's body because it might be interupting data flow in proxy.
+
+To enable it, follow this step:
+
+1. Enable in your `nuxt.config.ts`
+```ts
+export default defineNuxtConfig({
+  // ...
+  pong: {
+    // ...
+    traceReqBody: true,
+    traceResBody: true,
+    // ...
+  },
+})
+```
+
+1. Replace import from `@privyid/nhp/core` to `@privyid/pong/nhp` in your `server.config.ts`
+
+```diff
+-import { defineServer } from '@privyid/nhp/core'
++import { defineServer } from '@privyid/pong/nhp'
+
+export default defineServer([
+  {
+    name     : 'example',
+    baseUrl  : '/api/example',
+    targetUrl: 'https://reqres.in/api/',
+  },
+])
+```
 
 ## Contribution
 

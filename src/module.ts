@@ -8,6 +8,7 @@ import {
 } from '@nuxt/kit'
 import { defuArrayFn } from 'defu'
 import type { Options } from 'pino-http'
+import type { OptionsJson } from 'body-parser'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -31,6 +32,22 @@ export interface ModuleOptions {
    */
   tracer?: boolean,
   /**
+   * Trace request body
+   *
+   * ⚠️ This request additional config
+   * @experimental
+   * @default false
+   */
+  traceReqBody?: boolean,
+  /**
+   * Trace response body (NHP).
+   *
+   * ⚠️ This request additional config
+   * @experimental
+   * @default false
+   */
+  traceResBody?: boolean,
+  /**
    * Inject special headers to NuAPI
    * @default true
    */
@@ -41,6 +58,10 @@ export interface ModuleOptions {
    * @default true
    */
   debug?: boolean,
+  /**
+   * Body Parser JSON options
+   */
+  bodyParser?: OptionsJson,
 }
 
 export interface ModulePrivateRuntimeConfig {
@@ -55,11 +76,14 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {
-    ping  : true,
-    logger: true,
-    tracer: true,
-    nuapi : true,
-    debug : true,
+    ping        : true,
+    logger      : true,
+    tracer      : true,
+    traceReqBody: false,
+    traceResBody: false,
+    nuapi       : true,
+    debug       : true,
+    bodyParser  : {},
   },
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
