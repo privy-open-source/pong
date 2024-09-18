@@ -2523,11 +2523,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@privyid/nhp@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@privyid/nhp@npm:1.0.0"
+"@privyid/nhp@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@privyid/nhp@npm:1.0.1"
   dependencies:
-    "@nuxt/kit": "npm:^3.11.2"
+    "@nuxt/kit": "npm:^3.13.1"
     connect: "npm:^3.7.0"
     consola: "npm:^3.0.0"
     fs-extra: "npm:^11.1.0"
@@ -2542,7 +2542,7 @@ __metadata:
     unconfig: "npm:^0.5.0"
   bin:
     nhp: ./bin/nhp.js
-  checksum: 10/b17083326c17a2ab3c5e555e611fc171ffecbaa0c63ce9f5948b0b852e740895aca0953110b63c458763011d03245f5ee4850990c646c5ae3b092d03a504a979
+  checksum: 10/5cbb1e42509cba6305c00a4379ca4a75148de2e43a6d3de5bb2393bdf5cdc23777e6dba53340532df0ad3ec64f021d24d04f6dd801109aa0add7f1d6b355365d
   languageName: node
   linkType: hard
 
@@ -2572,7 +2572,7 @@ __metadata:
     "@nuxt/schema": "npm:3.12.4"
     "@nuxt/test-utils": "npm:3.14.2"
     "@privyid/eslint-config-persona": "npm:0.27.0"
-    "@privyid/nhp": "npm:1.0.0"
+    "@privyid/nhp": "npm:1.0.1"
     "@privyid/nuapi": "npm:0.3.0-alpha.6"
     "@types/body-parser": "npm:1.19.5"
     "@types/express": "npm:4.17.21"
