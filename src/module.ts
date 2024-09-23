@@ -64,7 +64,7 @@ export interface ModuleOptions {
   bodyParser?: OptionsJson,
 }
 
-export interface ModulePrivateRuntimeConfig {
+export interface ModuleRuntimeConfig {
   pong: Required<ModuleOptions>,
 }
 
@@ -92,7 +92,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (options.ping) {
       addServerHandler({
         route  : '/ping',
-        handler: resolve('./runtime/pong'),
+        handler: resolve('./runtime/server/route/pong'),
       })
     }
 
@@ -110,10 +110,10 @@ export default defineNuxtModule<ModuleOptions>({
         ],
       })
 
-      addServerPlugin(resolve('./runtime/logger'))
+      addServerPlugin(resolve('./runtime/server/plugins/pong'))
     }
 
     if (options.nuapi && hasNuxtModule('@privyid/nuapi'))
-      addPlugin(resolve('./runtime/nuapi'))
+      addPlugin(resolve('./runtime/plugins/nuapi'))
   },
 })
