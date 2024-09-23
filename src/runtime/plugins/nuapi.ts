@@ -10,7 +10,7 @@ import {
 import { onRequest } from '@privyid/nuapi/core'
 import { v4 as uuidv4 } from 'uuid'
 import { env } from 'std-env'
-import { isUUID } from '../core/utils'
+import { isUUID } from '../../core/utils'
 
 /**
  * Waiting loading ref to false

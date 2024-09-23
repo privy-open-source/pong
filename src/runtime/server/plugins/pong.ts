@@ -1,14 +1,11 @@
 import { useRuntimeConfig } from '#imports'
 import type { NitroAppPlugin } from 'nitropack'
-import { useLogger } from '../core/logger'
+import { useLogger } from '../../../core/logger'
 import { fromNodeMiddleware } from 'h3'
 import bodyParser from 'body-parser'
 
-function defineNitroPlugin (def: NitroAppPlugin) {
-  return def
-}
-
-export default defineNitroPlugin((nitroApp) => {
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+export default <NitroAppPlugin> function (nitroApp) {
   const config = useRuntimeConfig()
 
   if (config.pong.tracer && config.pong.traceReqBody)
@@ -16,4 +13,4 @@ export default defineNitroPlugin((nitroApp) => {
 
   if (config.pong.logger)
     nitroApp.hooks.hook('request', fromNodeMiddleware(useLogger()))
-})
+}

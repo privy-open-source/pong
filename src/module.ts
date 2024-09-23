@@ -92,7 +92,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (options.ping) {
       addServerHandler({
         route  : '/ping',
-        handler: resolve('./runtime/pong'),
+        handler: resolve('./runtime/server/route/pong'),
       })
     }
 
@@ -114,6 +114,6 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     if (options.nuapi && hasNuxtModule('@privyid/nuapi'))
-      addPlugin(resolve('./runtime/nuapi'))
+      addPlugin(resolve('./runtime/plugins/nuapi'))
   },
 })
