@@ -110,7 +110,7 @@ export default defineNuxtModule<ModuleOptions>({
         ],
       })
 
-      addServerPlugin(resolve('./runtime/logger'))
+      addServerPlugin(resolve('./runtime/server/plugins/pong'))
     }
 
     if (options.nuapi && hasNuxtModule('@privyid/nuapi'))
