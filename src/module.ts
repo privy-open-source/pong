@@ -64,7 +64,7 @@ export interface ModuleOptions {
   bodyParser?: OptionsJson,
 }
 
-export interface ModulePrivateRuntimeConfig {
+export interface ModuleRuntimeConfig {
   pong: Required<ModuleOptions>,
 }
 

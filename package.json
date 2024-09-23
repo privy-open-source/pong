@@ -31,7 +31,7 @@
     "build": "nuxt-module-build build",
     "dev": "nuxi dev playground | pino-pretty",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxi prepare playground",
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint . --ext .js,.vue,.ts --format pretty",
     "fix": "yarn lint --fix",
