@@ -2728,7 +2728,7 @@ __metadata:
     "@privyid/nuapi": "npm:0.3.0-alpha.6"
     "@types/body-parser": "npm:1.19.5"
     "@types/express": "npm:4.17.21"
-    "@types/fast-redact": "npm:^3"
+    "@types/fast-redact": "npm:3.0.4"
     "@types/simple-oauth2": "npm:5.0.7"
     "@types/uuid": "npm:10.0.0"
     "@typescript-eslint/eslint-plugin": "npm:5.62.0"
@@ -3404,7 +3404,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/fast-redact@npm:^3":
+"@types/fast-redact@npm:3.0.4":
   version: 3.0.4
   resolution: "@types/fast-redact@npm:3.0.4"
   checksum: 10/d130c7c2d322e761c65ec8ecd821bf56e132672cd9de1703a53a65e051d2f43af6062040d3f0afdd48b364e1e4b29b858a748517ba9a6a7f1dab12ce7000103a
