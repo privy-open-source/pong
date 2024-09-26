@@ -1,4 +1,3 @@
-import tracer from './tracer'
 import PinoHttp, { type HttpLogger } from 'pino-http'
 import { useRuntimeConfig } from '#imports'
 import {
@@ -21,17 +20,7 @@ export function useLogger () {
   if (!logger) {
     const config   = useRuntimeConfig()
     const pinoHttp = PinoHttp({
-      redact: config.pong.loggerRedact,
-      mixin (context, _) {
-        if (config.pong.tracer) {
-          const span = tracer?.scope()?.active()
-
-          if (span)
-            tracer.inject(span.context(), 'log', context)
-        }
-
-        return context
-      },
+      redact    : config.pong.loggerRedact,
       formatters: {
         level: (label) => {
           return { level: label }

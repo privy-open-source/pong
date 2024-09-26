@@ -48,6 +48,7 @@
     "destr": "^2.0.1",
     "fast-content-type-parse": "^2.0.0",
     "fast-redact": "^3.5.0",
+    "magic-string": "^0.30.11",
     "pino-http": "^10.0.0",
     "pino-std-serializers": "^7.0.0",
     "uuid": "^10.0.0"

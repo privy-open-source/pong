@@ -2752,6 +2752,7 @@ __metadata:
     eslint-plugin-vue: "npm:9.28.0"
     fast-content-type-parse: "npm:^2.0.0"
     fast-redact: "npm:^3.5.0"
+    magic-string: "npm:^0.30.11"
     nuxt: "npm:3.13.2"
     pino-http: "npm:^10.0.0"
     pino-pretty: "npm:11.2.2"

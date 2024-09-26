@@ -9,6 +9,8 @@ import {
 import { defuArrayFn } from 'defu'
 import type { Options } from 'pino-http'
 import type { OptionsJson } from 'body-parser'
+import type { Plugin } from 'rollup'
+import injectDDTrace from './rollup'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -115,5 +117,13 @@ export default defineNuxtModule<ModuleOptions>({
 
     if (options.nuapi && hasNuxtModule('@privyid/nuapi'))
       addPlugin(resolve('./runtime/plugins/nuapi'))
+
+    if (options.tracer) {
+      nuxt.hook('nitro:init', (nitro) => {
+        nitro.hooks.hook('rollup:before', (_, config) => {
+          (config.plugins as Plugin[]).push(injectDDTrace([resolve('./core/tracer')]))
+        })
+      })
+    }
   },
 })
