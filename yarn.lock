@@ -2011,16 +2011,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/devtools-kit@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@nuxt/devtools-kit@npm:1.5.0"
+"@nuxt/devtools-kit@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@nuxt/devtools-kit@npm:1.5.1"
   dependencies:
     "@nuxt/kit": "npm:^3.13.2"
     "@nuxt/schema": "npm:^3.13.2"
     execa: "npm:^7.2.0"
   peerDependencies:
     vite: "*"
-  checksum: 10/6da7ab3d44a818d19280592953ffe445cc7fdb636f1bb47a5813ae33ea0e5bd9fcc91804eeb0b19ce48f04a2c736621638ad5976c37102ea9350f0a51911de28
+  checksum: 10/8a301e786b52811326d4fecd0d3e506103e45a944b0319d7ab26e9e01365ede7219186225e7f3d01c4a5531ca4ff850887523028210498d1b2f2b1103871bce8
   languageName: node
   linkType: hard
 
@@ -2044,9 +2044,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxt/devtools-wizard@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@nuxt/devtools-wizard@npm:1.5.0"
+"@nuxt/devtools-wizard@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@nuxt/devtools-wizard@npm:1.5.1"
   dependencies:
     consola: "npm:^3.2.3"
     diff: "npm:^7.0.0"
@@ -2060,17 +2060,17 @@ __metadata:
     semver: "npm:^7.6.3"
   bin:
     devtools-wizard: cli.mjs
-  checksum: 10/6e3c0ae6510791f62bbc52ae9b81634c22c48f38ab65538333d57e5d42d57744515dc4712e19557ddec029f510945598528e908bb9c10c6544a9543840403f26
+  checksum: 10/f503730ec31c2f7304bb50dc5cc96870b4e24eaef94cfc6003ba9a4894b7d0d19cb5a186c298037e03537acffd8f4ecbe8a1f7ca3010193e53a0bb15c296af49
   languageName: node
   linkType: hard
 
-"@nuxt/devtools@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@nuxt/devtools@npm:1.5.0"
+"@nuxt/devtools@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@nuxt/devtools@npm:1.5.1"
   dependencies:
     "@antfu/utils": "npm:^0.7.10"
-    "@nuxt/devtools-kit": "npm:1.5.0"
-    "@nuxt/devtools-wizard": "npm:1.5.0"
+    "@nuxt/devtools-kit": "npm:1.5.1"
+    "@nuxt/devtools-wizard": "npm:1.5.1"
     "@nuxt/kit": "npm:^3.13.2"
     "@vue/devtools-core": "npm:7.4.4"
     "@vue/devtools-kit": "npm:7.4.4"
@@ -2109,7 +2109,7 @@ __metadata:
     vite: "*"
   bin:
     devtools: cli.mjs
-  checksum: 10/7e71e2f2ba6a469af9dc2a233e562538f49c6c0b94d71355bbe2781725271ad1c4469e286a837d13bfe529a0c6e737089c915116d58f8b1766005d8bcb9d767e
+  checksum: 10/b4f114bca7a85ec54bbcccfa7a82104f52d97427ce3059178f07e50977332a8423ad9616b7791da1edbbbef0b04bd928907ffdf39f40add2b6fac4e6f80420ca
   languageName: node
   linkType: hard
 
@@ -2718,7 +2718,7 @@ __metadata:
   resolution: "@privyid/pong@workspace:."
   dependencies:
     "@fingerprintjs/fingerprintjs": "npm:^4.0.0"
-    "@nuxt/devtools": "npm:1.5.0"
+    "@nuxt/devtools": "npm:1.5.1"
     "@nuxt/kit": "npm:^3.13.2"
     "@nuxt/module-builder": "npm:0.8.4"
     "@nuxt/schema": "npm:3.13.2"
