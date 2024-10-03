@@ -1,7 +1,8 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  modules: [
+  compatibilityDate: '2024-10-03',
+  modules          : [
     '@privyid/nhp',
     '@privyid/nuapi',
     '../src/module',
