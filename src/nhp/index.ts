@@ -106,7 +106,7 @@ export function defineServer (servers: ApiServer[]): NHPApiServer[] {
     if (config.pong.traceReqBody)
       onProxyReq = withRequestBodyFix(onProxyReq)
 
-    const isTraceResBody = config.pong.traceReqBody
+    const isTraceResBody = config.pong.traceResBody
       && server.traceResBody !== false
 
     if (isTraceResBody)

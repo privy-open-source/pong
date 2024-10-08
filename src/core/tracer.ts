@@ -5,9 +5,16 @@ import {
   type IncomingMessage,
 } from 'node:http'
 import { replaceId } from './utils'
+import {
+  parsePath,
+  parseURL,
+  withBase,
+  cleanDoubleSlashes,
+} from 'ufo'
 
 declare module 'http' {
   export interface IncomingMessage {
+    originalUrl?: string,
     body?: any,
   }
 
@@ -18,10 +25,16 @@ declare module 'http' {
 
 function traceRequest (span?: Span, req?: IncomingMessage | ClientRequest, res?: IncomingMessage | ServerResponse<IncomingMessage>) {
   if (span && req) {
-    const url    = 'path' in req ? req.path : req.url
-    const method = req.method
+    const { pathname } = ('path' in req)
+      ? parsePath(cleanDoubleSlashes(req.path))
+      : parseURL(cleanDoubleSlashes(req.originalUrl ?? req.url))
+
+    const url = ('protocol' in req && 'host' in req)
+      ? withBase(pathname, `${req.protocol}//${req.host}`)
+      : pathname
 
     if (url) {
+      const method  = req.method
       const name    = replaceId(method ? `${method} ${url}` : url)
       const headers = 'getHeaders' in req ? req.getHeaders() : req.headers
       const id      = headers['x-request-id']

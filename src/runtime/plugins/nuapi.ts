@@ -46,7 +46,7 @@ export default defineNuxtPlugin({
         /**
          * Add Browser's fingerprint
          */
-        if (!config.headers['X-Browser-Id'] && process.client) {
+        if (!config.headers['X-Browser-Id'] && import.meta.client) {
           // Prevent double request
           if (isLoading.value)
             await waitLoading(isLoading)

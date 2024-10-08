@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "my-module-playground",
+  "name": "pong-playground",
   "type": "module",
   "scripts": {
     "dev": "nuxi dev",
@@ -8,6 +8,8 @@
     "generate": "nuxi generate"
   },
   "devDependencies": {
-    "nuxt": "latest"
+    "nuxt": "latest",
+    "@privyid/nhp": "latest",
+    "@privyid/nuapi": "latest"
   }
 }
