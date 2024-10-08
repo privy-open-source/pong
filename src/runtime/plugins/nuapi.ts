@@ -72,7 +72,7 @@ export default defineNuxtPlugin({
         /**
          * Add Browser's screen size
          */
-        if (!config.headers['X-Browser-Screen'] && process.client)
+        if (!config.headers['X-Browser-Screen'] && import.meta.client)
           config.headers['X-Browser-Screen'] = `${window.screen.width}x${window.screen.height}`
 
         /**
