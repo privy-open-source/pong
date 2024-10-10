@@ -10,7 +10,7 @@ import {
 import { onRequest } from '@privyid/nuapi/core'
 import { v4 as uuidv4 } from 'uuid'
 import { env } from 'std-env'
-import { isUUID } from '../core/utils'
+import { isUUID } from '../../core/utils'
 
 /**
  * Waiting loading ref to false
@@ -46,7 +46,7 @@ export default defineNuxtPlugin({
         /**
          * Add Browser's fingerprint
          */
-        if (!config.headers['X-Browser-Id'] && process.client) {
+        if (!config.headers['X-Browser-Id'] && import.meta.client) {
           // Prevent double request
           if (isLoading.value)
             await waitLoading(isLoading)
@@ -72,7 +72,7 @@ export default defineNuxtPlugin({
         /**
          * Add Browser's screen size
          */
-        if (!config.headers['X-Browser-Screen'] && process.client)
+        if (!config.headers['X-Browser-Screen'] && import.meta.client)
           config.headers['X-Browser-Screen'] = `${window.screen.width}x${window.screen.height}`
 
         /**

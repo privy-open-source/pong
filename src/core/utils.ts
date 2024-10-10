@@ -2,11 +2,9 @@ import destr from 'destr'
 
 export const UUID_REGEX = /^[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}$/gi
 
-export const UUID_URL_REGEX = /\/[\da-f]{8}(?:-[\da-f]{4}){3}-[\da-f]{12}/gi
+export const PRIVYID_REGEX = /^[a-z]{2,}\d{4,}$/gi
 
-export const PRIVYID_URL_REGEX = /\/[a-z]{2,}\d{4,}/gi
-
-export const ID_URL_REGEX = /\/\d+/gi
+export const ID_REGEX = /^[\da-f]+$/gi
 
 /**
  * Replace ID or UUID in URL to "{id}""
@@ -15,9 +13,14 @@ export const ID_URL_REGEX = /\/\d+/gi
  */
 export function replaceId (name: string) {
   return name
-    .replaceAll(UUID_URL_REGEX, '/:id')
-    .replaceAll(ID_URL_REGEX, '/:id')
-    .replaceAll(PRIVYID_URL_REGEX, '/:privy-id')
+    .split('/')
+    .map((path) => {
+      return path
+        .replaceAll(UUID_REGEX, '{uuid}')
+        .replaceAll(ID_REGEX, '{id}')
+        .replaceAll(PRIVYID_REGEX, '{privy_id}')
+    })
+    .join('/')
 }
 
 /**

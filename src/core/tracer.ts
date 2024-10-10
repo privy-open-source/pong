@@ -1,28 +1,88 @@
-import ddTrace from 'dd-trace'
+import ddTrace, { type Span } from 'dd-trace'
 import {
-  type ServerResponse,
   ClientRequest,
   IncomingMessage,
+  type ServerResponse,
 } from 'node:http'
 import {
-  parsePath,
-  withBase,
-  withProtocol,
-} from 'ufo'
+  parseJWT,
+  parseScreen,
+  replaceId,
+} from './utils'
 import {
-  createEvent,
-  getRequestURL,
-  getRequestHeader,
-} from 'h3'
-import { replaceId } from './utils'
+  parsePath,
+  parseURL,
+  withBase,
+  cleanDoubleSlashes,
+} from 'ufo'
+import { parseUA } from 'browserslist-ua-parser'
+import { useRuntimeConfig } from '#imports'
 
 declare module 'http' {
   export interface IncomingMessage {
+    originalUrl?: string,
     body?: any,
   }
 
   export interface ServerResponse {
     body?: any,
+  }
+}
+
+const TRACE_HEADERS: string[] = [
+  'content-type',
+  'content-length',
+  'referer',
+  'user-agent',
+  'x-request-id',
+  'x-request-timestamp',
+  'x-browser-id',
+  'x-browser-screen',
+  'x-api-version',
+  'x-application-name',
+  'x-application-version',
+  'x-platform-name',
+  'x-platform-type',
+  'x-testing-mode',
+]
+
+function traceRequest (span?: Span, req?: IncomingMessage | ClientRequest, res?: IncomingMessage | ServerResponse) {
+  if (span && req) {
+    const { pathname, host, protocol } = ('path' in req)
+      ? parsePath(cleanDoubleSlashes(req.path))
+      : parseURL(cleanDoubleSlashes(req.originalUrl ?? req.url))
+
+    const url = (req instanceof ClientRequest)
+      ? withBase(pathname, `${req.protocol ?? protocol}//${req.host ?? host}`)
+      : pathname
+
+    if (url) {
+      const method = req.method
+      const name   = replaceId(method ? `${method} ${url}` : url)
+
+      span.setTag('resource.name', name)
+
+      if (req instanceof IncomingMessage) {
+        const auth   = req.headers.authorization
+        const ua     = req.headers['user-agent']
+        const screen = req.headers['x-browser-screen']
+
+        if (auth)
+          span.setTag('user.privy_id', parseJWT(auth)?.privy_id)
+
+        if (ua)
+          span.setTag('user.browser', parseUA(ua))
+
+        if (screen)
+          span.setTag('user.screen', parseScreen(screen as string))
+
+        if (req.body)
+          span.setTag('http.request.body', req.body)
+
+        if (res?.body)
+          span.setTag('http.response.body', res.body)
+      }
+    }
   }
 }
 
@@ -32,61 +92,23 @@ tracer.use('net', false)
 
 tracer.use('dns', false)
 
+tracer.use('pino', true)
+
 tracer.use('http', {
   blocklist: [
     '/favicon.ico',
     '/robots.txt',
     '/ping',
     (path) => path.startsWith('/_'),
+    ...useRuntimeConfig().pong.tracerBlocklist,
   ],
-  hooks: {
-    request (span, req, res) {
-      if (span) {
-        if (req instanceof IncomingMessage) {
-          const event = createEvent(req, res as ServerResponse<IncomingMessage>)
-          const url   = getRequestURL(event)
-          const name  = replaceId(`${event.method} ${url.pathname}`)
-          const id    = getRequestHeader(event, 'X-Request-Id')
-
-          span.setTag('resource.name', name)
-          span.setTag('http.request_id', id)
-          span.setTag('http.referer', getRequestHeader(event, 'Referer'))
-          span.setTag('http.request.body', req.body)
-
-          if (res) {
-            span.setTag('http.response.status_code', res.statusCode)
-            span.setTag('http.response.body', res.body)
-          }
-        }
-
-        if (req instanceof ClientRequest) {
-          const path = parsePath(req.path)
-          const url  = withBase(path.pathname, withProtocol(req.host, req.protocol))
-          const name = replaceId(`${req.method} ${url}`)
-          const id   = req.getHeader('X-Request-Id')
-
-          span.setTag('resource.name', name)
-          span.setTag('http.request_id', id)
-          span.setTag('http.referer', req.getHeader('Referer'))
-        }
-      }
-    },
-  },
+  hooks  : { request: traceRequest },
+  headers: TRACE_HEADERS,
 })
 
 tracer.use('fetch', {
-  hooks: {
-    request (span, req, _res) {
-      if (span && req instanceof Request) {
-        const name = replaceId(`${req.method} ${req.url}`)
-        const id   = req.getHeader('X-Request-Id')
-
-        span.setTag('resource.name', name)
-        span.setTag('http.request_id', id)
-        span.setTag('http.referer', req.getHeader('Referer'))
-      }
-    },
-  },
+  hooks  : { request: traceRequest },
+  headers: TRACE_HEADERS,
 })
 
 export default tracer

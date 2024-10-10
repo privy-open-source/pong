@@ -60,9 +60,7 @@ DD_VERSION= # (Optional) Your service version, ex: 1.0.0
 
 ## NHP Trace Proxy Body
 
-By default, Pong not trace any requests / responses's body because it might be interupting data flow in proxy.
-
-To enable it, follow this step:
+By default, Pong not trace any requests / responses's body because it might be interupting data flow in proxy. But if you can enable it by following this steps:
 
 1. Enable in your `nuxt.config.ts`
 ```ts
@@ -77,7 +75,7 @@ export default defineNuxtConfig({
 })
 ```
 
-1. Replace import from `@privyid/nhp/core` to `@privyid/pong/nhp` in your `server.config.ts`
+2. Replace import from `@privyid/nhp/core` to `@privyid/pong/nhp` in your `server.config.ts`
 
 ```diff
 -import { defineServer } from '@privyid/nhp/core'
