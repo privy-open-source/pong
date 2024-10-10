@@ -34,10 +34,15 @@ export interface ModuleOptions {
    */
   tracer?: boolean,
   /**
+   * Tracer blocklist url
+   */
+  tracerBlocklist?: string[],
+  /**
    * Trace request body
    *
    * ⚠️ This request additional config
    * @experimental
+   * @link https://github.com/privy-open-source/pong#nhp-trace-proxy-body
    * @default false
    */
   traceReqBody?: boolean,
@@ -46,6 +51,7 @@ export interface ModuleOptions {
    *
    * ⚠️ This request additional config
    * @experimental
+   * @link https://github.com/privy-open-source/pong#nhp-trace-proxy-body
    * @default false
    */
   traceResBody?: boolean,
@@ -78,17 +84,30 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {
-    ping        : true,
-    logger      : true,
-    tracer      : true,
-    traceReqBody: false,
-    traceResBody: false,
-    nuapi       : true,
-    debug       : true,
-    bodyParser  : {},
+    ping           : true,
+    logger         : true,
+    tracer         : true,
+    tracerBlocklist: [],
+    traceReqBody   : false,
+    traceResBody   : false,
+    nuapi          : true,
+    debug          : true,
+    bodyParser     : {},
   },
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
+
+    nuxt.options.runtimeConfig.pong = defuArrayFn(nuxt.options.runtimeConfig.pong, options, {
+      loggerRedact: [
+        'req.headers.cookie',
+        'req.headers.authorization',
+        'req.headers["x-token"]',
+        'req.headers["x-signature"]',
+        'req.headers["x-signature-payload"]',
+        'req.headers["application-key"]',
+        'req.headers["merchant-key"]',
+      ],
+    })
 
     // Add ping route
     if (options.ping) {
@@ -98,32 +117,23 @@ export default defineNuxtModule<ModuleOptions>({
       })
     }
 
-    if (options.logger) {
-      nuxt.options.runtimeConfig.pong = defuArrayFn(nuxt.options.runtimeConfig.pong, options, {
-        loggerRedact: [
-          'request.headers.cookie',
-          'request.headers.authorization',
-          'request.headers["x-token"]',
-          'request.headers["x-signature"]',
-          'request.headers["x-signature-payload"]',
-          'request.headers["application-key"]',
-          'request.headers["merchant-key"]',
-          'user.uuid',
-        ],
-      })
-
-      addServerPlugin(resolve('./runtime/server/plugins/pong'))
-    }
-
-    if (options.nuapi && hasNuxtModule('@privyid/nuapi'))
-      addPlugin(resolve('./runtime/plugins/nuapi'))
-
+    // Add Datadog Tracer
     if (options.tracer) {
       nuxt.hook('nitro:init', (nitro) => {
         nitro.hooks.hook('rollup:before', (_, config) => {
           (config.plugins as Plugin[]).push(injectDDTrace([resolve('./core/tracer')]))
         })
       })
+
+      addServerPlugin(resolve('./runtime/server/plugins/tracer'))
     }
+
+    // Add Pino Logger
+    if (options.logger)
+      addServerPlugin(resolve('./runtime/server/plugins/logger'))
+
+    // Inject NuApi
+    if (options.nuapi && hasNuxtModule('@privyid/nuapi'))
+      addPlugin(resolve('./runtime/plugins/nuapi'))
   },
 })
