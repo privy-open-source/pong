@@ -1,6 +1,6 @@
 {
   "name": "@privyid/pong",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "packageManager": "yarn@4.5.0",
   "description": "Service discovery, Log & Trace module",
   "repository": {
@@ -43,14 +43,12 @@
     "@nuxt/kit": "^3.13.2",
     "body-parser": "^1.20.3",
     "browserslist-ua-parser": "^1.0.1",
-    "dd-trace": "^5.0.0",
+    "dd-trace": "^5.23.0",
     "defu": "^6.1.2",
     "destr": "^2.0.1",
     "fast-content-type-parse": "^2.0.0",
-    "fast-redact": "^3.5.0",
     "magic-string": "^0.30.11",
     "pino-http": "^10.0.0",
-    "pino-std-serializers": "^7.0.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
