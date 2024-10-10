@@ -1,5 +1,6 @@
 import MagicString from 'magic-string'
 import { EOL } from 'node:os'
+import { basename } from 'node:path'
 import { type Plugin } from 'rollup'
 
 export default function injectDDTrace (packages: string[]): Plugin {
@@ -8,8 +9,12 @@ export default function injectDDTrace (packages: string[]): Plugin {
   return {
     name: 'rollup-plugin-dd-trace',
     buildStart () {
-      files = packages.map((id) => {
-        return this.emitFile({ id, type: 'chunk' })
+      files = packages.map((file) => {
+        return this.emitFile({
+          id      : file,
+          type    : 'chunk',
+          fileName: `${basename(file)}.mjs`,
+        })
       })
     },
     renderChunk (code, chunk) {

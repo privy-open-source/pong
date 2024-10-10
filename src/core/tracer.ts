@@ -1,16 +1,22 @@
 import ddTrace, { type Span } from 'dd-trace'
 import {
+  ClientRequest,
+  IncomingMessage,
   type ServerResponse,
-  type ClientRequest,
-  type IncomingMessage,
 } from 'node:http'
-import { replaceId } from './utils'
+import {
+  parseJWT,
+  parseScreen,
+  replaceId,
+} from './utils'
 import {
   parsePath,
   parseURL,
   withBase,
   cleanDoubleSlashes,
 } from 'ufo'
+import { parseUA } from 'browserslist-ua-parser'
+import { useRuntimeConfig } from '#imports'
 
 declare module 'http' {
   export interface IncomingMessage {
@@ -23,29 +29,58 @@ declare module 'http' {
   }
 }
 
-function traceRequest (span?: Span, req?: IncomingMessage | ClientRequest, res?: IncomingMessage | ServerResponse<IncomingMessage>) {
+const TRACE_HEADERS: string[] = [
+  'content-type',
+  'content-length',
+  'referer',
+  'user-agent',
+  'x-request-id',
+  'x-request-timestamp',
+  'x-browser-id',
+  'x-browser-screen',
+  'x-api-version',
+  'x-application-name',
+  'x-application-version',
+  'x-platform-name',
+  'x-platform-type',
+  'x-testing-mode',
+]
+
+function traceRequest (span?: Span, req?: IncomingMessage | ClientRequest, res?: IncomingMessage | ServerResponse) {
   if (span && req) {
-    const { pathname } = ('path' in req)
+    const { pathname, host, protocol } = ('path' in req)
       ? parsePath(cleanDoubleSlashes(req.path))
       : parseURL(cleanDoubleSlashes(req.originalUrl ?? req.url))
 
-    const url = ('protocol' in req && 'host' in req)
-      ? withBase(pathname, `${req.protocol}//${req.host}`)
+    const url = (req instanceof ClientRequest)
+      ? withBase(pathname, `${req.protocol ?? protocol}//${req.host ?? host}`)
       : pathname
 
     if (url) {
-      const method  = req.method
-      const name    = replaceId(method ? `${method} ${url}` : url)
-      const headers = 'getHeaders' in req ? req.getHeaders() : req.headers
-      const id      = headers['x-request-id']
+      const method = req.method
+      const name   = replaceId(method ? `${method} ${url}` : url)
 
       span.setTag('resource.name', name)
-      span.setTag('http.request_id', id)
-      span.setTag('http.referer', headers.referer)
 
-      if (res) {
-        span.setTag('http.response.status_code', res.statusCode)
-        span.setTag('http.response.body', res.body)
+      if (req instanceof IncomingMessage) {
+        const auth   = req.headers.authorization
+        const ua     = req.headers['user-agent']
+        const screen = req.headers['x-browser-screen']
+
+        if (auth)
+          span.setTag('user.privy_id', parseJWT(auth)?.privy_id)
+
+        if (ua)
+          span.setTag('user.browser', parseUA(ua))
+
+        if (screen)
+          span.setTag('user.screen', parseScreen(screen as string))
+
+        if (req.body)
+          span.setTag('http.request.body', req.body)
+
+        if (res?.body)
+          span.setTag('http.response.body', res.body)
       }
     }
   }
@@ -57,16 +92,23 @@ tracer.use('net', false)
 
 tracer.use('dns', false)
 
+tracer.use('pino', true)
+
 tracer.use('http', {
   blocklist: [
     '/favicon.ico',
     '/robots.txt',
     '/ping',
     (path) => path.startsWith('/_'),
+    ...useRuntimeConfig().pong.tracerBlocklist,
   ],
-  hooks: { request: traceRequest },
+  hooks  : { request: traceRequest },
+  headers: TRACE_HEADERS,
 })
 
-tracer.use('fetch', { hooks: { request: traceRequest } })
+tracer.use('fetch', {
+  hooks  : { request: traceRequest },
+  headers: TRACE_HEADERS,
+})
 
 export default tracer
