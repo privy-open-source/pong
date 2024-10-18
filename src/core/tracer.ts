@@ -44,6 +44,7 @@ const TRACE_HEADERS: string[] = [
   'x-platform-name',
   'x-platform-type',
   'x-testing-mode',
+  'location',
 ]
 
 function traceRequest (span?: Span, req?: IncomingMessage | ClientRequest, res?: IncomingMessage | ServerResponse) {
