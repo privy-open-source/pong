@@ -2,8 +2,11 @@
 import { defineEventHandler } from 'h3'
 import { useRuntimeConfig } from '#imports'
 import { env } from 'std-env'
+import si from 'systeminformation'
+import { memoryUsage } from 'node:process'
+import { formatAllBytes } from '../../../core/utils'
 
-export default defineEventHandler(() => {
+export default defineEventHandler(async () => {
   const config = useRuntimeConfig()
 
   return {
@@ -19,6 +22,14 @@ export default defineEventHandler(() => {
       dd_service   : env.DD_SERVICE || '-',
       dd_version   : env.DD_VERSION || '-',
       config       : config.pong.debug ? config.public : undefined,
+      sysinfo      : config.pong.sysinfo
+        ? {
+            memory: formatAllBytes({
+              process: memoryUsage(),
+              os     : await si.mem(),
+            }),
+          }
+        : undefined,
     },
   }
 })

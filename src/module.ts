@@ -67,6 +67,12 @@ export interface ModuleOptions {
    */
   debug?: boolean,
   /**
+   * Enable system monitor:
+   * - Show memusage in `/ping`'s response
+   * @default true
+   */
+  sysinfo?: boolean,
+  /**
    * Body Parser JSON options
    */
   bodyParser?: OptionsJson,
@@ -92,6 +98,7 @@ export default defineNuxtModule<ModuleOptions>({
     traceResBody   : false,
     nuapi          : true,
     debug          : true,
+    sysinfo        : true,
     bodyParser     : {},
   },
   setup (options, nuxt) {
