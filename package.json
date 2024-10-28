@@ -50,7 +50,7 @@
     "magic-string": "^0.30.11",
     "pino-http": "^10.0.0",
     "systeminformation": "^5.23.5",
-    "uuid": "^10.0.0"
+    "uuid": "^11.0.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "1.6.0",
