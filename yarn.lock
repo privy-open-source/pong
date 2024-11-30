@@ -2281,7 +2281,7 @@ __metadata:
     eslint-plugin-promise: "npm:6.6.0"
     eslint-plugin-unicorn: "npm:47.0.0"
     eslint-plugin-varspacing: "npm:1.2.2"
-    eslint-plugin-vue: "npm:9.29.0"
+    eslint-plugin-vue: "npm:9.32.0"
     fast-content-type-parse: "npm:^2.0.0"
     magic-string: "npm:^0.30.11"
     nuxt: "npm:3.13.2"
@@ -6028,9 +6028,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:9.29.0":
-  version: 9.29.0
-  resolution: "eslint-plugin-vue@npm:9.29.0"
+"eslint-plugin-vue@npm:9.32.0":
+  version: 9.32.0
+  resolution: "eslint-plugin-vue@npm:9.32.0"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.4.0"
     globals: "npm:^13.24.0"
@@ -6042,7 +6042,7 @@ __metadata:
     xml-name-validator: "npm:^4.0.0"
   peerDependencies:
     eslint: ^6.2.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
-  checksum: 10/4a95828db4028fbd0fd2525bc914270941485ce3df7e620df6f64aecf5c9f32fc504ee3241cabfead1aba0a1546843ff5af2edf31f47b4405b56a7748266d9cf
+  checksum: 10/2e1f22e82dfa5aa82b71a3b1ff1ba3de25b65018f62b9ae081bea6291832ce1bdbdbdcaeaab23c67863224a1dbd66bfe71ef6d40640468e93480318e60020816
   languageName: node
   linkType: hard
 
