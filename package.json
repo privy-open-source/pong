@@ -57,7 +57,7 @@
     "@nuxt/module-builder": "0.8.4",
     "@nuxt/schema": "3.14.1592",
     "@nuxt/test-utils": "3.15.1",
-    "@privyid/eslint-config-persona": "1.0.0-rc.12",
+    "@privyid/eslint-config-persona": "1.1.0",
     "@privyid/nhp": "1.0.1",
     "@privyid/nuapi": "0.3.0-alpha.6",
     "@types/body-parser": "1.19.5",
