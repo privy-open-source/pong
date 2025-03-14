@@ -19,7 +19,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: { public: { showMe: 'SHOW ME' } },
   pong         : {
-    traceReqBody: true,
-    traceResBody: true,
+    traceReqBody     : true,
+    traceResBody     : true,
+    logLevelThreshold: 'info',
   },
 })

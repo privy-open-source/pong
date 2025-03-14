@@ -33,14 +33,18 @@ export function useLogger () {
         return reqId && isUUID(reqId) ? reqId : uuidv4()
       },
       customLogLevel (req, res, err) {
+        const { logLevelThreshold } = config.pong
+
         if (res.statusCode >= 500 || err)
           return 'error'
-        else if (res.statusCode >= 400 && res.statusCode < 500)
+        else if (res.statusCode >= 400 && res.statusCode < 500) {
+          if (logLevelThreshold === 'error')
+            return 'silent'
           return 'warn'
-        else if (res.statusCode >= 300 && res.statusCode < 400)
+        } else if (res.statusCode >= 300 && res.statusCode < 400)
           return 'silent'
 
-        return 'info'
+        return logLevelThreshold === 'error' || logLevelThreshold === 'warn' ? 'silent' : 'info'
       },
     })
 

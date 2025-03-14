@@ -76,6 +76,10 @@ export interface ModuleOptions {
    * Body Parser JSON options
    */
   bodyParser?: OptionsJson,
+  /**
+   * Minimum log level sent to the logger
+   */
+  logLevelThreshold?: 'error' | 'warn' | 'info',
 }
 
 export interface ModuleRuntimeConfig {
@@ -90,16 +94,17 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: {
-    ping           : true,
-    logger         : true,
-    tracer         : true,
-    tracerBlocklist: [],
-    traceReqBody   : false,
-    traceResBody   : false,
-    nuapi          : true,
-    debug          : true,
-    sysinfo        : true,
-    bodyParser     : {},
+    ping             : true,
+    logger           : true,
+    tracer           : true,
+    tracerBlocklist  : [],
+    traceReqBody     : false,
+    traceResBody     : false,
+    nuapi            : true,
+    debug            : true,
+    sysinfo          : true,
+    bodyParser       : {},
+    logLevelThreshold: 'info',
   },
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)

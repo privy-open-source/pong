@@ -68,8 +68,9 @@ export default defineNuxtConfig({
   // ...
   pong: {
     // ...
-    traceReqBody: true,
-    traceResBody: true,
+    traceReqBody      : true,
+    traceResBody      : true,
+    logLevelThreshold : 'info',
     // ...
   },
 })
