@@ -40,7 +40,7 @@ export function useLogger () {
         return reqId && isUUID(reqId) ? reqId : uuidv4()
       },
       customLogLevel (req, res, err) {
-        const threshold = LOG_LEVEL[config.pong.logLevelThreshold as 'warn' | 'silent' | 'info'] ?? 1
+        const threshold = LOG_LEVEL[config.pong.logLevelThreshold as 'error' | 'warn' | 'info'] ?? 1
 
         let level = LOG_LEVEL.info
 
