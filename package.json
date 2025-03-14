@@ -81,7 +81,7 @@
     "eslint-plugin-vue": "9.32.0",
     "nuxt": "3.14.1592",
     "pino-pretty": "13.0.0",
-    "typescript": "5.6.3",
+    "typescript": "5.8.2",
     "vitest": "3.0.8"
   },
   "peerDependencies": {
