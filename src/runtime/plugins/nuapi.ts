@@ -6,6 +6,7 @@ import {
   ref,
   watch,
   type Ref,
+  useCookie,
 } from '#imports'
 import { onRequest } from '@privyid/nuapi/core'
 import { v4 as uuidv4 } from 'uuid'
@@ -33,7 +34,7 @@ export default defineNuxtPlugin({
   enforce  : 'post',
   setup () {
     const isLoading = ref(false)
-    const browserId = ref()
+    const browserId = useCookie('_browser/fingerprint')
     const route     = useRoute()
 
     const appName      = useState('appName', () => env.APP_NAME)
@@ -46,12 +47,12 @@ export default defineNuxtPlugin({
         /**
          * Add Browser's fingerprint
          */
-        if (!config.headers['X-Browser-Id'] && import.meta.client) {
+        if (!config.headers['X-Browser-Id']) {
           // Prevent double request
           if (isLoading.value)
             await waitLoading(isLoading)
 
-          if (!browserId.value) {
+          if (!browserId.value && import.meta.client) {
             try {
               isLoading.value = true
 

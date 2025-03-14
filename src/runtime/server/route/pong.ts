@@ -27,6 +27,7 @@ export default defineEventHandler(async () => {
             memory: formatAllBytes({
               process: memoryUsage(),
               os     : await si.mem(),
+              docker : await si.dockerContainerStats(),
             }),
           }
         : undefined,
