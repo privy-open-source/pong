@@ -11,6 +11,13 @@ import { isUUID } from './utils'
 
 let logger: HttpLogger<IncomingMessage, ServerResponse, 'error' | 'warn' | 'silent' | 'info'>
 
+enum LOG_LEVEL {
+  'silent' = 0,
+  'info' = 1,
+  'warn' = 2,
+  'error' = 3,
+}
+
 export function useLogger () {
   if (!logger) {
     const config   = useRuntimeConfig()
@@ -33,18 +40,20 @@ export function useLogger () {
         return reqId && isUUID(reqId) ? reqId : uuidv4()
       },
       customLogLevel (req, res, err) {
-        const { logLevelThreshold } = config.pong
+        const threshold = LOG_LEVEL[config.pong.logLevelThreshold as 'warn' | 'silent' | 'info'] ?? 1
+
+        let level = LOG_LEVEL.info
 
         if (res.statusCode >= 500 || err)
-          return 'error'
-        else if (res.statusCode >= 400 && res.statusCode < 500) {
-          if (logLevelThreshold === 'error')
-            return 'silent'
-          return 'warn'
-        } else if (res.statusCode >= 300 && res.statusCode < 400)
-          return 'silent'
+          level = LOG_LEVEL.error
+        else if (res.statusCode >= 400 && res.statusCode < 500)
+          level = LOG_LEVEL.warn
+        else if (res.statusCode >= 300 && res.statusCode < 400)
+          level = LOG_LEVEL.silent
 
-        return logLevelThreshold === 'error' || logLevelThreshold === 'warn' ? 'silent' : 'info'
+        return (level >= threshold
+          ? LOG_LEVEL[level] as 'error' | 'warn' | 'silent' | 'info'
+          : 'silent')
       },
     })
 
