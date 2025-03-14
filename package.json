@@ -46,7 +46,7 @@
     "dd-trace": "^5.23.0",
     "defu": "^6.1.2",
     "destr": "^2.0.1",
-    "fast-content-type-parse": "^2.0.0",
+    "fast-content-type-parse": "^3.0.0",
     "magic-string": "^0.30.11",
     "pino-http": "^10.0.0",
     "systeminformation": "^5.23.5",
