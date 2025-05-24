@@ -2878,9 +2878,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@privyid/eslint-config-persona@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@privyid/eslint-config-persona@npm:1.1.0"
+"@privyid/eslint-config-persona@npm:1.2.0":
+  version: 1.2.0
+  resolution: "@privyid/eslint-config-persona@npm:1.2.0"
   peerDependencies:
     "@typescript-eslint/eslint-plugin": 5.62.0
     "@typescript-eslint/parser": 5.62.0
@@ -2897,7 +2897,7 @@ __metadata:
     eslint-plugin-varspacing: 1.2.2
     eslint-plugin-vue: 9.23.0
     typescript: 5.6.3
-  checksum: 10/18c271f62c4a299f67f41476ef0d37f87bd54ba928f02c47f664998c8efb3ec2b02a6704b917960663ee5a7713893b514aa993dd75642882ab7b7805d1c6fe0e
+  checksum: 10/9f2ab65280f98742c927b0ef7abeb8e0a1f622b2884d9afcbdb033ae336621c43c8bcdb83144349f55effe23ecad9792887cf81a0501381b8b56e89518288dd0
   languageName: node
   linkType: hard
 
@@ -2949,7 +2949,7 @@ __metadata:
     "@nuxt/module-builder": "npm:0.8.4"
     "@nuxt/schema": "npm:3.17.4"
     "@nuxt/test-utils": "npm:3.19.0"
-    "@privyid/eslint-config-persona": "npm:1.1.0"
+    "@privyid/eslint-config-persona": "npm:1.2.0"
     "@privyid/nhp": "npm:1.0.1"
     "@privyid/nuapi": "npm:1.0.0"
     "@types/body-parser": "npm:1.19.5"
