@@ -41,7 +41,7 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.0.0",
     "@nuxt/kit": "^3.13.2",
-    "body-parser": "^1.20.3",
+    "body-parser": "^2.0.0",
     "browserslist-ua-parser": "^1.0.1",
     "dd-trace": "^5.23.0",
     "defu": "^6.1.2",
