@@ -61,7 +61,7 @@
     "@privyid/nhp": "1.0.1",
     "@privyid/nuapi": "1.0.0",
     "@types/body-parser": "1.19.5",
-    "@types/express": "5.0.0",
+    "@types/express": "5.0.3",
     "@types/fast-redact": "3.0.4",
     "@types/simple-oauth2": "5.0.7",
     "@types/uuid": "10.0.0",
