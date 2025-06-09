@@ -82,7 +82,7 @@
     "nuxt": "3.17.4",
     "pino-pretty": "13.0.0",
     "typescript": "5.8.2",
-    "vitest": "3.0.8"
+    "vitest": "3.2.3"
   },
   "peerDependencies": {
     "@privyid/nhp": ">=1.0.0",
