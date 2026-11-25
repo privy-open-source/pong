@@ -41,7 +41,7 @@
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.0.0",
     "@nuxt/kit": "^3.13.2",
-    "body-parser": "^1.20.3",
+    "body-parser": "^2.0.0",
     "browserslist-ua-parser": "^1.0.1",
     "dd-trace": "^5.23.0",
     "defu": "^6.1.2",
@@ -60,7 +60,7 @@
     "@privyid/eslint-config-persona": "1.1.0",
     "@privyid/nhp": "1.0.1",
     "@privyid/nuapi": "1.0.0",
-    "@types/body-parser": "1.19.5",
+    "@types/body-parser": "2.2.0",
     "@types/express": "5.0.0",
     "@types/fast-redact": "3.0.4",
     "@types/simple-oauth2": "5.0.7",
